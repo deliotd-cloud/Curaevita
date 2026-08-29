@@ -69,7 +69,7 @@ export default function Home() {
 
         <div className="brand-showcase" aria-label="The CuraeVita app family">
           <div className="showcase-orbit" aria-hidden="true" />
-          <Image className="family-symbol" src="/curaevita-family.webp" alt="CuraeVita family mark" width="210" height="210" decoding="async" />
+          <Image className="family-symbol" src="/curaevita-family.webp" alt="CuraeVita family mark" width="210" height="210" loading="eager" fetchPriority="high" decoding="async" />
           {companions.slice(0, 4).map((app, index) => (
             <div className={`orbit-icon orbit-${index + 1}`} key={app.name}>
               <Image src={app.image} alt="" width="86" height="86" decoding="async" />

@@ -116,7 +116,7 @@ export default async function CompanionPage({ params }: PageProps) {
         </div>
         <div className="app-icon-stage">
           <span aria-hidden="true" />
-          <Image src={app.image} alt={app.iconAlt} width="260" height="260" decoding="async" />
+          <Image src={app.image} alt={app.iconAlt} width="260" height="260" loading="eager" fetchPriority="high" decoding="async" />
           <small>CuraeVita Health Apps</small>
           <strong>{app.name}</strong>
         </div>
