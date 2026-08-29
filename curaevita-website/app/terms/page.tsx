@@ -24,7 +24,7 @@ export default function TermsPage() {
 
         <section className="legal-card">
           <h2>Price and trial eligibility</h2>
-          <p>The current UK price for new GLP-1 Companion and Menopause Companion subscribers is £1.00 per month. Eligible new Google Play subscribers may be shown a seven-day free trial. A trial applies only when it appears in the Google Play purchase screen for your account.</p>
+          <p>The current UK price for new GLP-1 Companion and Menopause Companion subscribers is £0.99 per month. Eligible new Google Play subscribers may be shown a seven-day free trial. A trial applies only when it appears in the Google Play purchase screen for your account.</p>
         </section>
         <section className="legal-card">
           <h2>Trial conversion and renewal</h2>
@@ -53,7 +53,7 @@ export default function TermsPage() {
         </section>
         <section className="legal-card">
           <h2>Support</h2>
-          <p>For subscription or product support, use the <a href="/support/">support page</a> or email <a href="mailto:deliotd@gmail.com?subject=CuraeVita%20support%20request">deliotd@gmail.com</a>.</p>
+          <p>For subscription or product support, use the <a href="/support/">support page</a> or email <a href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20support%20request">eliviontechnologies@gmail.com</a>.</p>
         </section>
         <a className="legal-back" href="/">← Return to CuraeVita</a>
       </article>

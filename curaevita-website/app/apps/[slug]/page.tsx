@@ -61,7 +61,7 @@ export default async function CompanionPage({ params }: PageProps) {
     applicationSchema.isAccessibleForFree = false;
     applicationSchema.offers = {
       '@type': 'Offer',
-      price: '1.00',
+      price: '0.99',
       priceCurrency: 'GBP',
       description: 'Monthly subscription. Eligible new Google Play subscribers may be shown a seven-day free trial before confirming.',
     };
@@ -110,7 +110,7 @@ export default async function CompanionPage({ params }: PageProps) {
           <h1>{app.headline}</h1>
           <p className="app-lead">{app.intro}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="mailto:deliotd@gmail.com?subject=CuraeVita%20launch%20updates">Ask about testing</a>
+            <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Ask about testing</a>
             <a className="text-link" href="#features">See what it tracks <span aria-hidden="true">↓</span></a>
           </div>
         </div>

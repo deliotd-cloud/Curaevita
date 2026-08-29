@@ -22,7 +22,7 @@ export default function SupportPage() {
           <p className="eyebrow"><span /> CuraeVita support</p>
           <h1>Help with your Companion.</h1>
           <p>Choose the closest topic below. Please do not include medication, symptom, diagnosis or other sensitive health details in an email unless they are essential to explain a technical problem.</p>
-          <a className="button button-primary" href="mailto:deliotd@gmail.com?subject=CuraeVita%20support%20request">Email support</a>
+          <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20support%20request">Email support</a>
         </header>
 
         <section className="support-grid" aria-label="Support topics">
@@ -67,7 +67,7 @@ export default function SupportPage() {
           </div>
           <div>
             <p>Tell us the app name, app version, Android version, what you expected and what happened. If there is an error message, copy its wording. Do not email exported reports or screenshots containing sensitive information unless support specifically asks for them and you choose to do so.</p>
-            <a className="text-link" href="mailto:deliotd@gmail.com?subject=CuraeVita%20support%20request">deliotd@gmail.com <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20support%20request">eliviontechnologies@gmail.com <span aria-hidden="true">↗</span></a>
           </div>
         </section>
 

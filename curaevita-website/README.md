@@ -10,7 +10,7 @@ The public website for the CuraeVita Health Apps family. It uses the supplied Cu
 - Metadata, canonical links, social cards, JSON-LD, `robots.txt`, `sitemap.xml` and the web manifest are generated during the static build.
 - Optimised WebP images are used on pages. The original supplied PNG assets remain available as masters.
 
-GLP-1 Companion and Menopause Companion are currently described as £1.00 per month in the UK. Eligible new Google Play subscribers may be shown a seven-day trial. Google Play is the binding source for price, eligibility and renewal information.
+GLP-1 Companion and Menopause Companion are currently described as £0.99 per month in the UK. Eligible new Google Play subscribers may be shown a seven-day trial. Google Play is the binding source for price, eligibility and renewal information.
 
 ## Quality checks
 

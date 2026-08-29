@@ -33,7 +33,7 @@ export default function Home() {
           alternateName: 'CuraeVita',
           url: 'https://curaevita.com/',
           logo: 'https://curaevita.com/icon.png',
-          email: 'mailto:deliotd@gmail.com',
+          email: 'mailto:eliviontechnologies@gmail.com',
           description: 'Independent, privacy-conscious Android health tracking apps for personal records and clearer healthcare conversations.',
         },
         {
@@ -86,7 +86,7 @@ export default function Home() {
       <section className="status-band" aria-label="Current release status">
         <div><strong>2</strong><span>apps in closed testing</span></div>
         <div><strong>1</strong><span>next release candidate</span></div>
-        <div><strong>£1.00</strong><span>UK monthly price for new subscribers</span></div>
+        <div><strong>£0.99</strong><span>UK monthly price for new subscribers</span></div>
         <div><strong>0</strong><span>advertising trackers</span></div>
       </section>
 
@@ -162,7 +162,7 @@ export default function Home() {
         </div>
         <div className="price-card">
           <p>UK price for new GLP-1 and Menopause subscribers</p>
-          <strong><sup>£</sup>1.00<small>/ month</small></strong>
+          <strong><sup>£</sup>0.99<small>/ month</small></strong>
           <span>Google Play shows whether your account is eligible for the seven-day free trial before you confirm.</span>
           <a className="button button-primary" href="/terms/">View subscription terms</a>
         </div>
@@ -173,7 +173,7 @@ export default function Home() {
         <p className="eyebrow"><span /> Launch updates</p>
         <h2>Follow the CuraeVita journey.</h2>
         <p>GLP-1 Companion and Menopause Companion are completing closed testing. ADHD Companion is next.</p>
-        <a className="button button-light" href="mailto:deliotd@gmail.com?subject=CuraeVita%20launch%20updates">Email CuraeVita</a>
+        <a className="button button-light" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Email CuraeVita</a>
       </section>
 
       <SiteFooter />

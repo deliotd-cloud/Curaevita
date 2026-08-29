@@ -17,7 +17,7 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
           <a href="/#approach">Our approach</a>
           <a href="/about/">About</a>
           <a href="/support/">Support</a>
-          <a className="nav-cta" href="mailto:deliotd@gmail.com?subject=CuraeVita%20launch%20updates">Get launch updates</a>
+          <a className="nav-cta" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Get launch updates</a>
         </div>
       </nav>
     </header>

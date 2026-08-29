@@ -64,7 +64,7 @@ export default function PrivacyPage() {
         </section>
         <section className="legal-card">
           <h2>Questions and changes</h2>
-          <p>For privacy questions, email <a href="mailto:deliotd@gmail.com?subject=CuraeVita%20privacy%20question">deliotd@gmail.com</a>. This notice may change when an app, service provider or legal requirement changes. A new review date will be shown here.</p>
+          <p>For privacy questions, email <a href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20privacy%20question">eliviontechnologies@gmail.com</a>. This notice may change when an app, service provider or legal requirement changes. A new review date will be shown here.</p>
         </section>
         <a className="legal-back" href="/">← Return to CuraeVita</a>
       </article>

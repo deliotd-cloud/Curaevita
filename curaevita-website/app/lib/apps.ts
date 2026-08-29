@@ -79,7 +79,7 @@ export const companions: Companion[] = [
       { question: 'Does the app read everything in Health Connect?', answer: 'No. If you enable the feature, the app can write new weight and body-fat entries; it does not read your wider Health Connect record.' },
     ],
     subscription: {
-      price: '£1.00 per month',
+      price: '£0.99 per month',
       trial: 'Eligible new Google Play subscribers are shown a seven-day free trial before they confirm. Google Play displays the binding price, eligibility and renewal terms.',
     },
   },
@@ -127,7 +127,7 @@ export const companions: Companion[] = [
       { question: 'Can I create a report for an appointment?', answer: 'Yes. You can create a PDF for 30 days, 90 days or all recorded history and choose whether to share it.' },
     ],
     subscription: {
-      price: '£1.00 per month',
+      price: '£0.99 per month',
       trial: 'Eligible new Google Play subscribers are shown a seven-day free trial before they confirm. Google Play displays the binding price, eligibility and renewal terms.',
     },
   },
