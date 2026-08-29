@@ -33,7 +33,7 @@ img { display: block; }
 .brand { display: inline-flex; align-items: center; gap: 10px; }
 .brand img { object-fit: contain; }
 .brand span { display: grid; line-height: 1; }
-.brand strong { font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
+.brand strong { font-family: Georgia, 'Times New Roman', serif; font-size: 22px; font-weight: 500; letter-spacing: -.025em; }
 .brand small { margin-top: 4px; color: #6a7a80; font-size: 8px; letter-spacing: .24em; text-transform: uppercase; }
 .nav-links { display: flex; align-items: center; gap: 29px; color: #3d555e; font-size: 13px; font-weight: 700; }
 .nav-links a:not(.nav-cta):hover { color: var(--ink); }
@@ -179,7 +179,7 @@ footer > p { max-width: 540px; margin: 0; color: #839ba4; font-size: 11px; line-
   .site-nav, .hero { width: min(100% - 28px, 1180px); }
   .site-nav { min-height: 78px; }
   .nav-cta { padding: 10px 13px; font-size: 11px; }
-  .brand strong { font-size: 16px; }
+  .brand strong { font-size: 19px; }
   .hero { padding: 52px 0 68px; }
   .hero h1 { font-size: clamp(45px, 14vw, 61px); }
   .hero-intro { font-size: 16px; }
