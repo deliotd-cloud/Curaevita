@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">CuraeVita master mark</title>
+  <desc id="desc">An open C surrounding a pulse line that flows into an infinity loop.</desc>
+  <defs>
+    <linearGradient id="cv" x1="70" y1="420" x2="420" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173F82"/><stop offset=".48" stop-color="#05BFC6"/><stop offset="1" stop-color="#B7EA45"/>
+    </linearGradient>
+  </defs>
+  <path d="M368 110A172 172 0 1 0 368 402" fill="none" stroke="url(#cv)" stroke-width="58" stroke-linecap="butt"/>
+  <path d="M63 271h111l25-73 38 144 37-88c25-58 62-77 99-52 50 34 34 113-22 113-39 0-64-37-79-68" fill="none" stroke="url(#cv)" stroke-width="23" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
