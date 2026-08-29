@@ -51,7 +51,7 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow"><span /> Thoughtful health tracking, made personal</p>
-          <h1>Small daily check-ins.<br /><em>Clearer health conversations.</em></h1>
+          <h1>Small daily <span className="no-break">check-ins.</span><br /><em>Clearer health conversations.</em></h1>
           <p className="hero-intro">
             CuraeVita makes focused Android health-tracking apps that help you notice patterns,
             prepare for appointments and keep your health story close, without ads or unnecessary accounts.
