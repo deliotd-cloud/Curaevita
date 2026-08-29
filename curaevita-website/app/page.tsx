@@ -81,7 +81,7 @@ export default function Home() {
           <h1>Small daily check-ins.<br /><em>Clearer health conversations.</em></h1>
           <p className="hero-intro">
             CuraeVita Companions help you notice patterns, prepare for appointments
-            and keep your health story close—without ads or unnecessary accounts.
+            and keep your health story close, without ads or unnecessary accounts.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#companions">Meet the Companions <span aria-hidden="true">↘</span></a>
@@ -165,7 +165,7 @@ export default function Home() {
         <div className="privacy-copy">
           <p className="eyebrow"><span /> Your information, your choice</p>
           <h2>Health tracking without turning you into the product.</h2>
-          <p>Your logs are kept locally on your device. A paid Companion uses Google Play and RevenueCat only to process and verify subscription access—not to receive your medication, symptom or journal entries.</p>
+          <p>Your logs are kept locally on your device. A paid Companion uses Google Play and RevenueCat only to process and verify subscription access. They do not receive your medication, symptom or journal entries.</p>
           <ul>
             <li>Export only when you choose</li>
             <li>Optional device access lock</li>

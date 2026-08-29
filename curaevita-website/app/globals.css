@@ -209,7 +209,55 @@ footer > p { max-width: 540px; margin: 0; color: #839ba4; font-size: 11px; line-
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .site-nav { animation: nav-in 650ms cubic-bezier(.22, 1, .36, 1) both; }
+  .hero-copy > * { animation: rise-in 760ms cubic-bezier(.22, 1, .36, 1) both; }
+  .hero-copy > :nth-child(1) { animation-delay: 90ms; }
+  .hero-copy > :nth-child(2) { animation-delay: 170ms; }
+  .hero-copy > :nth-child(3) { animation-delay: 250ms; }
+  .hero-copy > :nth-child(4) { animation-delay: 330ms; }
+  .hero-copy > :nth-child(5) { animation-delay: 410ms; }
+  .brand-showcase { animation: showcase-in 900ms 180ms cubic-bezier(.22, 1, .36, 1) both; }
+
+  .button, .text-link, .nav-cta, .companion-card, .app-card-top img {
+    transition: translate 260ms ease, transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease, background-color 260ms ease;
+  }
+  .button span, .text-link span { transition: translate 220ms ease; }
+  .button:hover { translate: 0 -2px; }
+  .button:hover span, .text-link:hover span { translate: 4px 0; }
+  .nav-cta:hover { background: var(--ink); color: white; translate: 0 -2px; }
+  .companion-card:hover { translate: 0 -7px; border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); box-shadow: 0 24px 50px rgba(6,37,52,.11); }
+  .companion-card:hover .app-card-top img { transform: rotate(-2deg) scale(1.04); }
+
+  .showcase-orbit { border-top-color: rgba(168, 233, 79, .72); animation: orbit-spin 18s linear infinite; }
+  .family-symbol { animation: family-glow 5s ease-in-out infinite; }
   .orbit-icon { animation: float 4.5s ease-in-out infinite; }
   .orbit-2, .orbit-4 { animation-delay: -2.2s; }
+  .privacy-ring { animation: ring-breathe 5.5s ease-in-out infinite; }
+  .ring-two { animation-delay: -2.75s; }
+  .updates-section img { animation: soft-float 5s ease-in-out infinite; }
+
+  @supports (animation-timeline: view()) {
+    .section-heading,
+    .companion-card,
+    .principle-grid article,
+    .privacy-art,
+    .privacy-copy,
+    .pricing-section > div,
+    .updates-section > * {
+      animation: section-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 24%;
+    }
+    .companion-card { animation-range: entry 2% cover 20%; }
+  }
+
+  @keyframes nav-in { from { opacity: 0; translate: 0 -10px; } }
+  @keyframes rise-in { from { opacity: 0; translate: 0 24px; } }
+  @keyframes showcase-in { from { opacity: 0; transform: translateY(28px) scale(.97); } }
   @keyframes float { 50% { translate: 0 -7px; } }
+  @keyframes soft-float { 50% { translate: 0 -5px; } }
+  @keyframes orbit-spin { to { transform: rotate(360deg); } }
+  @keyframes family-glow { 50% { filter: drop-shadow(0 20px 38px rgba(85, 226, 208, .28)); } }
+  @keyframes ring-breathe { 50% { scale: 1.035; opacity: .58; } }
+  @keyframes section-reveal { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: translateY(0); } }
 }
