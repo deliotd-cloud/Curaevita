@@ -51,3 +51,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Notify participating search engines
+        if: success()
+        run: |
+          curl --fail --silent --show-error --retry 3 \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data '{"host":"curaevita.com","key":"6c82c7992f5b4df0a5a57b7a55d19f48","keyLocation":"https://curaevita.com/6c82c7992f5b4df0a5a57b7a55d19f48.txt","urlList":["https://curaevita.com/","https://curaevita.com/apps/","https://curaevita.com/guides/","https://curaevita.com/guides/symptom-diary-for-an-appointment/","https://curaevita.com/guides/medication-tracking-report/","https://curaevita.com/guides/protect-health-notes-on-android/","https://curaevita.com/press/"]}' \
+            https://api.indexnow.org/indexnow

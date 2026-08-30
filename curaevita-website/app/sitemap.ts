@@ -1,13 +1,16 @@
 import type { MetadataRoute } from 'next';
 import { companions } from './lib/apps';
+import { guides } from './lib/guides';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-08-29T00:00:00.000Z');
+  const lastModified = new Date('2026-08-30T00:00:00.000Z');
   const pages: MetadataRoute.Sitemap = [
-    { url: 'https://curaevita.com/', lastModified, changeFrequency: 'weekly', priority: 1 },
+    { url: 'https://curaevita.com/', lastModified, changeFrequency: 'weekly', priority: 1, images: ['https://curaevita.com/og.png'] },
     { url: 'https://curaevita.com/apps/', lastModified, changeFrequency: 'weekly', priority: 0.9 },
+    { url: 'https://curaevita.com/guides/', lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://curaevita.com/press/', lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: 'https://curaevita.com/about/', lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: 'https://curaevita.com/support/', lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: 'https://curaevita.com/editorial-standards/', lastModified, changeFrequency: 'monthly', priority: 0.5 },
@@ -22,6 +25,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly' as const,
       priority: app.phase === 'testing' ? 0.9 : 0.7,
+      images: [`https://curaevita.com${app.image}`],
+    })),
+    ...guides.map((guide) => ({
+      url: `https://curaevita.com/guides/${guide.slug}/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+      images: ['https://curaevita.com/og.png'],
     })),
   ];
 }

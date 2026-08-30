@@ -42,6 +42,7 @@ export default function PrivacyPage() {
         <section className="legal-card">
           <h2>Subscriptions</h2>
           <p>Google Play processes payment information and the purchase. RevenueCat receives limited app, device and pseudonymous purchase identifiers so a paid Companion can verify subscription access. These services do not receive the medication, symptom or journal entries recorded in the app. Their own privacy terms also apply to the information they process.</p>
+          <p>To request deletion of the pseudonymous subscription record held for CuraeVita by RevenueCat, email <a href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20subscription%20data%20deletion">eliviontechnologies@gmail.com</a>. Include the Companion name and, if available, the Google Play order number; do not send health records.</p>
           <p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://www.revenuecat.com/privacy/">RevenueCat privacy policy</a></p>
         </section>
         <section className="legal-card">

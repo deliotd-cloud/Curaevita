@@ -9,7 +9,10 @@ export const metadata: Metadata = {
     template: '%s | CuraeVita',
   },
   description: 'Privacy-conscious Android health tracking apps for GLP-1 treatment, menopause, ADHD, digestive symptoms and migraine records.',
-  alternates: { canonical: '/' },
+  alternates: {
+    canonical: '/',
+    types: { 'application/rss+xml': '/feed.xml' },
+  },
   category: 'health',
   keywords: ['health tracking apps', 'Android health tracker', 'personal health record', 'symptom tracker', 'medication tracker'],
   icons: {

@@ -34,6 +34,7 @@ export default function Home() {
           url: 'https://curaevita.com/',
           logo: 'https://curaevita.com/icon.png',
           email: 'mailto:eliviontechnologies@gmail.com',
+          sameAs: ['https://github.com/deliotd-cloud/Curaevita'],
           description: 'Independent, privacy-conscious Android health tracking apps for personal records and clearer healthcare conversations.',
         },
         {
@@ -85,7 +86,7 @@ export default function Home() {
 
       <section className="status-band" aria-label="Current release status">
         <div><strong>2</strong><span>apps in closed testing</span></div>
-        <div><strong>1</strong><span>next release candidate</span></div>
+        <div><strong>3</strong><span>apps in internal testing</span></div>
         <div><strong>£0.99</strong><span>UK monthly price for new subscribers</span></div>
         <div><strong>0</strong><span>advertising trackers</span></div>
       </section>
@@ -168,11 +169,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section home-guides-section">
+        <div className="section-heading">
+          <p className="eyebrow"><span /> Practical guidance</p>
+          <h2>Make your personal record easier to use.</h2>
+          <p>Non-diagnostic guides for symptom diaries, appointment reports and safer health notes on Android.</p>
+        </div>
+        <div className="home-guide-links">
+          <a href="/guides/symptom-diary-for-an-appointment/"><span>01</span><strong>Prepare a symptom diary for an appointment</strong><i aria-hidden="true">→</i></a>
+          <a href="/guides/medication-tracking-report/"><span>02</span><strong>Build a clear medication tracking report</strong><i aria-hidden="true">→</i></a>
+          <a href="/guides/protect-health-notes-on-android/"><span>03</span><strong>Keep private health notes safer on Android</strong><i aria-hidden="true">→</i></a>
+        </div>
+      </section>
+
       <section className="updates-section" id="updates">
         <Image src="/curaevita-family.webp" alt="" width="88" height="88" loading="lazy" decoding="async" />
         <p className="eyebrow"><span /> Launch updates</p>
         <h2>Follow the CuraeVita journey.</h2>
-        <p>GLP-1 Companion and Menopause Companion are completing closed testing. ADHD Companion is next.</p>
+        <p>GLP-1 Companion and Menopause Companion are in closed testing. ADHD, Gut and Migraine Companions are in internal testing.</p>
         <a className="button button-light" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Email CuraeVita</a>
       </section>
 

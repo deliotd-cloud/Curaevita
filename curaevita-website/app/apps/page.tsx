@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { JsonLd } from '../components/json-ld';
 import { SiteFooter, SiteHeader } from '../components/site-shell';
 import { companions } from '../lib/apps';
 
@@ -18,6 +19,26 @@ export const metadata: Metadata = {
 export default function AppsPage() {
   return (
     <main className="inner-shell">
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        '@id': 'https://curaevita.com/apps/#page',
+        url: 'https://curaevita.com/apps/',
+        name: 'CuraeVita Android health tracking apps',
+        description: 'Focused Android Companion apps for private personal health records and appointment-ready reports.',
+        isPartOf: { '@id': 'https://curaevita.com/#website' },
+        inLanguage: 'en-GB',
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: companions.map((app, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: app.name,
+            url: `https://curaevita.com/apps/${app.slug}/`,
+            image: `https://curaevita.com${app.image}`,
+          })),
+        },
+      }} />
       <SiteHeader compact />
       <section className="directory-hero">
         <p className="eyebrow"><span /> CuraeVita Health Apps</p>

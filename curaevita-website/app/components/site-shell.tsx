@@ -14,6 +14,7 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
         </a>
         <div className="nav-links">
           <a href="/apps/">Companions</a>
+          <a href="/guides/">Guides</a>
           <a href="/#approach">Our approach</a>
           <a href="/about/">About</a>
           <a href="/support/">Support</a>
@@ -34,11 +35,14 @@ export function SiteFooter() {
       <p>Independent, privacy-conscious health tracking tools. CuraeVita apps do not diagnose, prescribe or replace professional medical care.</p>
       <nav className="footer-links" aria-label="Footer navigation">
         <a href="/apps/">Apps</a>
+        <a href="/guides/">Guides</a>
         <a href="/about/">About</a>
+        <a href="/press/">Press kit</a>
         <a href="/editorial-standards/">Editorial standards</a>
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
         <a href="/support/">Support</a>
+        <a href="https://github.com/deliotd-cloud/Curaevita" rel="me">GitHub</a>
       </nav>
     </footer>
   );

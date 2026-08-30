@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { JsonLd } from '../../components/json-ld';
 import { SiteFooter, SiteHeader } from '../../components/site-shell';
 import { companions, getCompanion } from '../../lib/apps';
+import { guides } from '../../lib/guides';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -27,13 +28,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: app.seoDescription,
       url: `/apps/${app.slug}/`,
       type: 'website',
-      images: [{ url: '/og.png', width: 1200, height: 630, alt: 'CuraeVita Health Apps' }],
+      images: [{ url: app.image, alt: app.iconAlt }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${app.name} by CuraeVita`,
       description: app.seoDescription,
-      images: ['/og.png'],
+      images: [app.image],
     },
   };
 }
@@ -68,6 +69,7 @@ export default async function CompanionPage({ params }: PageProps) {
   }
 
   const related = companions.filter((companion) => companion.slug !== app.slug).slice(0, 3);
+  const relatedGuides = guides.filter((guide) => guide.relatedApps.includes(app.slug));
 
   return (
     <main className="inner-shell companion-detail" style={{ '--app-accent': app.accent } as React.CSSProperties}>
@@ -209,6 +211,22 @@ export default async function CompanionPage({ params }: PageProps) {
         <strong>Important health information</strong>
         <p>{app.name} is a personal tracking and reporting tool. It does not diagnose, prescribe, recommend treatment or monitor emergencies. Follow advice from an appropriate healthcare professional and seek urgent help when needed.</p>
       </aside>
+
+      <section className="related-section app-guide-section">
+        <div>
+          <p className="eyebrow"><span /> Practical guides</p>
+          <h2>Use your personal record with more confidence</h2>
+        </div>
+        <div className="app-guide-grid">
+          {relatedGuides.map((guide, index) => (
+            <a href={`/guides/${guide.slug}/`} key={guide.slug}>
+              <span>0{index + 1}</span>
+              <strong>{guide.title}</strong>
+              <i aria-hidden="true">→</i>
+            </a>
+          ))}
+        </div>
+      </section>
 
       <section className="related-section">
         <div>
