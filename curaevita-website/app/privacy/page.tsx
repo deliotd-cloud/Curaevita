@@ -20,7 +20,7 @@ export default function PrivacyPage() {
       <article className="legal-page">
         <p className="eyebrow"><span /> Privacy notice</p>
         <h1>Your information stays yours.</h1>
-        <p className="legal-lead">This notice explains the shared privacy approach across the CuraeVita Companion family and this website. Individual in-app notices describe any feature-specific detail. Last updated 29 August 2026.</p>
+        <p className="legal-lead">This notice explains the shared privacy approach across the CuraeVita Companion family and this website. Individual in-app notices describe any feature-specific detail. Last updated 4 September 2026.</p>
 
         <section className="legal-card">
           <h2>Summary</h2>
@@ -57,6 +57,7 @@ export default function PrivacyPage() {
         <section className="legal-card">
           <h2>This website</h2>
           <p>CuraeVita does not add advertising or audience-tracking scripts to this website. The site is hosted using GitHub Pages. Like other web hosts, GitHub may process technical request information such as IP address, device information, requested pages and request time to operate and protect its service. See GitHub’s privacy statement for details.</p>
+          <p>Links from curaevita.com to Google Play may include campaign labels that identify the page or button location. Google Play can report aggregated store-listing visits and conversions from those labels. CuraeVita does not add a user identifier or health information to these links.</p>
           <p><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a></p>
         </section>
         <section className="legal-card">
