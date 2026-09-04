@@ -19,12 +19,306 @@ export type Guide = {
   eyebrow: string;
   readingTime: string;
   reviewed: string;
+  publishedDate: string;
+  modifiedDate: string;
   sections: GuideSection[];
   sources: GuideSource[];
   relatedApps: string[];
 };
 
 export const guides: Guide[] = [
+  {
+    slug: 'glp1-injection-log-what-to-record',
+    title: 'GLP-1 injection log: what to record each week',
+    seoTitle: 'GLP-1 Injection Log: What to Record Each Week',
+    description: 'A practical checklist for recording prescribed GLP-1 injections, dose details, injection sites, observations and questions without calculating treatment advice.',
+    excerpt: 'Keep a consistent weekly record of the facts you may want to revisit with your prescriber.',
+    eyebrow: 'GLP-1 tracking guide',
+    readingTime: '6 minute read',
+    reviewed: '4 September 2026',
+    publishedDate: '2026-09-04',
+    modifiedDate: '2026-09-04',
+    sections: [
+      {
+        title: 'Use the instructions supplied with your medicine',
+        paragraphs: [
+          'A tracking log should reflect the medicine and dose you have been prescribed. It should not calculate a dose, decide when you should change it or replace the patient information leaflet and instructions from your healthcare professional.',
+          'Write the medicine name and form exactly as shown on your prescription or packaging. This matters because GLP-1 medicines can have different active ingredients, brand names and licensed uses.',
+        ],
+      },
+      {
+        title: 'Record the same core facts for each injection',
+        paragraphs: [
+          'A short set of repeatable fields makes a weekly log easier to scan. If you are unsure what a field means, leave it blank and check the official instructions rather than guessing.',
+        ],
+        points: [
+          'Date and approximate time',
+          'Medicine name and prescribed dose',
+          'Injection area or site you used',
+          'Whether the entry was made at the time or added later',
+          'An optional factual note about the injection',
+          'Your next planned date based on the instructions you were given',
+        ],
+      },
+      {
+        title: 'Keep measurements and observations separate',
+        paragraphs: [
+          'Weight, measurements and side-effect observations are different kinds of information. Recording them in separate fields helps you see what was entered without implying that the injection caused a particular change.',
+          'Use the same unit and a reasonably consistent time or context when that is practical for you. A tracker can organise the entries, but a healthcare professional decides whether any pattern is clinically meaningful.',
+        ],
+      },
+      {
+        title: 'Add questions while they are fresh',
+        paragraphs: [
+          'If something is unclear, write a short question for your next contact with your prescriber or pharmacist. Do not wait for a routine appointment if the official leaflet or your healthcare professional tells you to seek help sooner.',
+        ],
+        points: [
+          'A question about the instructions you were given',
+          'A change or observation you want to describe accurately',
+          'A date you want to check against your prescription history',
+          'A supply or storage question for a pharmacist',
+        ],
+      },
+      {
+        title: 'Review the log before sharing it',
+        paragraphs: [
+          'Check dates, medicine names and duplicate entries before exporting a report. Choose only the period that is useful for the conversation you are preparing for.',
+          'An exported PDF becomes a separate copy outside the app. Check where it is saved and who can access it before sharing.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        name: 'NHS: Semaglutide',
+        url: 'https://www.nhs.uk/medicines/semaglutide/',
+        note: 'NHS medicine information covering prescribed use, supplied instructions and injection guidance for semaglutide.',
+      },
+      {
+        name: 'MHRA: GLP-1 medicines for weight loss and diabetes',
+        url: 'https://www.gov.uk/government/publications/glp-1-medicines-for-weight-loss-and-diabetes-what-you-need-to-know/glp-1-medicines-for-weight-loss-and-diabetes-what-you-need-to-know',
+        note: 'Current UK regulator information on prescribed GLP-1 medicines, patient leaflets and safety communications.',
+      },
+    ],
+    relatedApps: ['glp1-companion'],
+  },
+  {
+    slug: 'glp1-side-effect-diary',
+    title: 'How to keep a GLP-1 side-effect diary',
+    seoTitle: 'How to Keep a GLP-1 Side-Effect Diary',
+    description: 'Record the timing, severity, duration and context of GLP-1 side-effect observations in a factual diary for your own review or a healthcare appointment.',
+    excerpt: 'Separate what you noticed from what still needs professional interpretation.',
+    eyebrow: 'GLP-1 symptom diary guide',
+    readingTime: '7 minute read',
+    reviewed: '4 September 2026',
+    publishedDate: '2026-09-04',
+    modifiedDate: '2026-09-04',
+    sections: [
+      {
+        title: 'Treat the diary as a record, not a diagnosis',
+        paragraphs: [
+          'A side-effect diary can help you remember what happened and when. It cannot confirm that a medicine caused an observation, decide whether it is safe to continue or tell you to change a dose.',
+          'Use neutral descriptions in your own words. Keep the prescribed dose and injection history visible beside observations without presenting timing as proof of cause.',
+        ],
+      },
+      {
+        title: 'Use repeatable fields',
+        paragraphs: [
+          'Consistent fields make entries easier to compare and summarise. You do not need to record every field every day.',
+        ],
+        points: [
+          'Date and approximate start time',
+          'What you noticed',
+          'Severity using your own consistent scale',
+          'How long it lasted',
+          'Whether it affected sleep, work or usual activities',
+          'Relevant medicine and injection date',
+          'What action you took or who you contacted',
+        ],
+      },
+      {
+        title: 'Mark changes without interpreting them',
+        paragraphs: [
+          'If your prescriber changes a dose or medicine, record the date and the instruction you were given. Keep this separate from the symptom entry so the sequence is clear.',
+          'Gaps in a diary do not prove that no symptoms occurred. Note incomplete periods rather than filling them from memory unless you clearly label a later entry.',
+        ],
+      },
+      {
+        title: 'Know when a diary is not enough',
+        paragraphs: [
+          'A tracking app does not monitor emergencies. Follow the patient information leaflet and advice from your healthcare professional. Contact an appropriate service promptly if a symptom is severe, worsening or concerning.',
+          'The MHRA says severe, persistent stomach pain that may spread to the back requires urgent medical help because it can be a sign of acute pancreatitis. Do not wait to complete a diary or report before seeking help.',
+        ],
+      },
+      {
+        title: 'Create a concise appointment summary',
+        paragraphs: [
+          'Before an appointment, check the record and choose a useful date range. Put your current prescribed medicine, the most relevant observations and your questions before the detailed event list.',
+          'Share only the information you choose. A healthcare professional decides how the observations should be interpreted.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        name: 'MHRA: GLP-1 medicines for weight loss and diabetes',
+        url: 'https://www.gov.uk/government/publications/glp-1-medicines-for-weight-loss-and-diabetes-what-you-need-to-know/glp-1-medicines-for-weight-loss-and-diabetes-what-you-need-to-know',
+        note: 'Current UK regulator information on known side effects, urgent warning signs and continuing prescribed medicines unless advised otherwise.',
+      },
+      {
+        name: 'MHRA: Reminder of GLP-1 side effects and potential misuse',
+        url: 'https://www.gov.uk/drug-safety-update/glp-1-receptor-agonists-reminder-of-the-potential-side-effects-and-to-be-aware-of-the-potential-for-misuse',
+        note: 'UK safety advice on common and serious reactions, prescribed use and speaking to a healthcare professional about concerns.',
+      },
+      {
+        name: 'NHS: What to ask your healthcare professional',
+        url: 'https://www.nhs.uk/nhs-services/gps/what-to-ask-your-doctor/',
+        note: 'NHS guidance on recording symptom details, listing medicines and preparing priority questions.',
+      },
+    ],
+    relatedApps: ['glp1-companion'],
+  },
+  {
+    slug: 'glp1-progress-report-for-an-appointment',
+    title: 'How to prepare a GLP-1 progress report for an appointment',
+    seoTitle: 'GLP-1 Progress Report for an Appointment',
+    description: 'A non-diagnostic checklist for preparing a concise GLP-1 medication, injection, weight and side-effect report before a healthcare appointment.',
+    excerpt: 'Turn a longer personal log into a clear summary you can check before an appointment.',
+    eyebrow: 'GLP-1 appointment guide',
+    readingTime: '6 minute read',
+    reviewed: '4 September 2026',
+    publishedDate: '2026-09-04',
+    modifiedDate: '2026-09-04',
+    sections: [
+      {
+        title: 'Choose the reporting period first',
+        paragraphs: [
+          'Start with a date range that matches the conversation you are preparing for. A shorter complete period may be clearer than a longer record with many gaps.',
+          'State whether the report contains every entry you made or only selected information. A report should not make incomplete tracking look complete.',
+        ],
+      },
+      {
+        title: 'Put the essentials on the first page',
+        paragraphs: [
+          'Make the opening page easy to scan. Keep detailed logs available after the summary rather than crowding the main questions.',
+        ],
+        points: [
+          'Reporting period',
+          'Current prescribed medicine and dose as instructed',
+          'Recorded injection dates and any documented changes',
+          'A small number of clearly labelled measurements or trends',
+          'The most relevant side-effect observations',
+          'Two or three questions you want to discuss',
+        ],
+      },
+      {
+        title: 'Label charts and counts carefully',
+        paragraphs: [
+          'Include units, dates and the number of recorded entries. A line on a chart shows the values you entered; it does not explain why they changed.',
+          'If a measurement feature was optional or disabled for part of the period, say so rather than treating the missing values as zero.',
+        ],
+      },
+      {
+        title: 'Check medicine and injection history',
+        paragraphs: [
+          'Review medicine names, doses, dates and injection sites for obvious errors or duplicates. Keep a prescribed instruction separate from the event log of what you recorded doing.',
+          'Do not use the report to calculate a future dose or recommend a treatment change. Bring questions about instructions to your prescriber or pharmacist.',
+        ],
+      },
+      {
+        title: 'Review privacy before sharing',
+        paragraphs: [
+          'Read the final PDF and remove information you do not want to share. Check the recipient and remember that a copy sent by email, cloud storage or messaging is then handled by that service.',
+          'A personal report supports a conversation. It becomes part of an official clinical record only if the healthcare service chooses to include information from it.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        name: 'NHS: What to ask your healthcare professional',
+        url: 'https://www.nhs.uk/nhs-services/gps/what-to-ask-your-doctor/',
+        note: 'NHS appointment-preparation advice covering medicine lists, symptom details and priority questions.',
+      },
+      {
+        name: 'NHS: Semaglutide',
+        url: 'https://www.nhs.uk/medicines/semaglutide/',
+        note: 'NHS medicine information supporting accurate recording against the prescribed medicine and supplied instructions.',
+      },
+    ],
+    relatedApps: ['glp1-companion'],
+  },
+  {
+    slug: 'menopause-symptom-diary-for-an-appointment',
+    title: 'How to prepare a menopause symptom diary for an appointment',
+    seoTitle: 'Menopause Symptom Diary for an Appointment',
+    description: 'A practical checklist for recording menopause or perimenopause symptoms, HRT history, spotting and questions before a healthcare appointment.',
+    excerpt: 'Organise symptoms and HRT notes into a factual timeline while Menopause Companion prepares to launch.',
+    eyebrow: 'Menopause appointment guide',
+    readingTime: '6 minute read',
+    reviewed: '4 September 2026',
+    publishedDate: '2026-09-04',
+    modifiedDate: '2026-09-04',
+    sections: [
+      {
+        title: 'Choose the questions you want the diary to support',
+        paragraphs: [
+          'A diary can help you describe your own experience, remember changes and prepare questions. It does not diagnose menopause, interpret blood tests or decide whether a treatment is suitable.',
+          'Choose a manageable period and record consistently enough to be useful. A short factual record can be easier to discuss than a long list created from memory.',
+        ],
+      },
+      {
+        title: 'Record symptoms in a repeatable way',
+        paragraphs: [
+          'Use the same fields for the observations that matter to you. You do not need to track every possible symptom.',
+        ],
+        points: [
+          'Date and approximate time',
+          'What you noticed',
+          'Severity using your own consistent scale',
+          'How long it lasted',
+          'Effect on sleep, work or usual activities',
+          'An optional note in your own words',
+        ],
+      },
+      {
+        title: 'Keep HRT details factual',
+        paragraphs: [
+          'If you use HRT, record the product, form, prescribed dose and timing exactly as instructed. Mark the date of a clinician-directed change without treating the diary as a recommendation to change treatment.',
+          'The NHS advises discussing symptoms and available options with a doctor, nurse or pharmacist. Questions about benefits, risks or side effects need professional advice.',
+        ],
+      },
+      {
+        title: 'Add spotting, periods and test results carefully',
+        paragraphs: [
+          'Record spotting or period dates as events rather than using them to predict a future cycle. Store any blood-test value and reference range exactly as the laboratory reports it, including the unit.',
+          'A tracking app should not apply a universal range or interpret a result. Bring the original result and your questions to an appropriate healthcare professional.',
+        ],
+      },
+      {
+        title: 'Prepare a short summary',
+        paragraphs: [
+          'Before the appointment, check the diary for mistakes and choose the observations that best explain what you want to discuss. Put two or three priority questions at the top.',
+          'Read any exported report before sharing it and check where each copy will be stored.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        name: 'NHS: Treatment for menopause and perimenopause',
+        url: 'https://www.nhs.uk/conditions/menopause-and-perimenopause/treatment/',
+        note: 'NHS overview of speaking with a doctor, nurse or pharmacist about symptoms, HRT and other treatment options.',
+      },
+      {
+        name: 'NHS: Hormone replacement therapy',
+        url: 'https://www.nhs.uk/medicines/hormone-replacement-therapy-hrt/',
+        note: 'NHS information on HRT types, benefits, risks and use.',
+      },
+      {
+        name: 'NHS: What to ask your healthcare professional',
+        url: 'https://www.nhs.uk/nhs-services/gps/what-to-ask-your-doctor/',
+        note: 'NHS guidance on preparing symptom details, medicines and priority questions before an appointment.',
+      },
+    ],
+    relatedApps: ['menopause-companion'],
+  },
   {
     slug: 'symptom-diary-for-an-appointment',
     title: 'How to prepare a symptom diary for a healthcare appointment',
@@ -34,6 +328,8 @@ export const guides: Guide[] = [
     eyebrow: 'Appointment preparation guide',
     readingTime: '6 minute read',
     reviewed: '30 August 2026',
+    publishedDate: '2026-08-30',
+    modifiedDate: '2026-08-30',
     sections: [
       {
         title: 'Start with the purpose of the diary',
@@ -108,6 +404,8 @@ export const guides: Guide[] = [
     eyebrow: 'Personal health record guide',
     readingTime: '5 minute read',
     reviewed: '30 August 2026',
+    publishedDate: '2026-08-30',
+    modifiedDate: '2026-08-30',
     sections: [
       {
         title: 'State what the report covers',
@@ -181,6 +479,8 @@ export const guides: Guide[] = [
     eyebrow: 'Android privacy guide',
     readingTime: '6 minute read',
     reviewed: '30 August 2026',
+    publishedDate: '2026-08-30',
+    modifiedDate: '2026-08-30',
     sections: [
       {
         title: 'Protect the device first',
