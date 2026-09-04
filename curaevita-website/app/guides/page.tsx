@@ -5,11 +5,11 @@ import { guides } from '../lib/guides';
 
 export const metadata: Metadata = {
   title: 'Health Tracking and Appointment Guides',
-  description: 'Practical, non-diagnostic guides for symptom diaries, medication tracking reports, appointment preparation and Android health-note privacy.',
+  description: 'Practical GLP-1 injection, side-effect and appointment-report guides, plus menopause symptom diaries and private Android health-record guidance.',
   alternates: { canonical: '/guides/' },
   openGraph: {
     title: 'CuraeVita Health Tracking Guides',
-    description: 'Clear, practical guidance for keeping personal health records useful, private and ready for appointments.',
+    description: 'Clear GLP-1 and menopause tracking guidance for keeping personal health records useful, private and ready for appointments.',
     url: '/guides/',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: 'CuraeVita Health Apps' }],
   },
@@ -24,7 +24,7 @@ export default function GuidesPage() {
         '@id': 'https://curaevita.com/guides/#page',
         url: 'https://curaevita.com/guides/',
         name: 'CuraeVita health tracking and appointment guides',
-        description: 'Practical, non-diagnostic guides for personal health tracking and appointment preparation.',
+        description: 'Practical, non-diagnostic GLP-1, menopause and personal health tracking guides for appointment preparation.',
         isPartOf: { '@id': 'https://curaevita.com/#website' },
         inLanguage: 'en-GB',
         mainEntity: {
@@ -41,7 +41,7 @@ export default function GuidesPage() {
       <section className="directory-hero guide-directory-hero">
         <p className="eyebrow"><span /> CuraeVita practical guides</p>
         <h1>Make personal health records easier to use.</h1>
-        <p>Plain-language guidance for recording observations, preparing for appointments and protecting sensitive notes. These guides do not diagnose or recommend treatment.</p>
+        <p>Plain-language GLP-1, menopause and general guidance for recording observations, preparing for appointments and protecting sensitive notes. These guides do not diagnose or recommend treatment.</p>
       </section>
 
       <section className="guide-directory" aria-label="CuraeVita guides">
