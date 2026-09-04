@@ -14,7 +14,7 @@ export type Companion = {
   image: string;
   iconAlt: string;
   status: string;
-  phase: 'testing' | 'next' | 'development';
+  phase: 'published' | 'review' | 'testing' | 'next' | 'development';
   accent: string;
   description: string;
   seoTitle: string;
@@ -24,6 +24,7 @@ export type Companion = {
   intro: string;
   audience: string;
   packageName: string;
+  storeUrl?: string;
   features: CompanionFeature[];
   reportItems: string[];
   privacyItems: string[];
@@ -40,8 +41,8 @@ export const companions: Companion[] = [
     name: 'GLP-1 Companion',
     image: '/apps/glp1.webp',
     iconAlt: 'Green GLP-1 Companion app icon from the CuraeVita family',
-    status: 'Closed testing',
-    phase: 'testing',
+    status: 'Available on Google Play',
+    phase: 'published',
     accent: '#8ee84b',
     description: 'Dose, side-effect, weight and progress tracking with reports made for appointments.',
     seoTitle: 'GLP-1 Medication Tracker for Android',
@@ -51,6 +52,7 @@ export const companions: Companion[] = [
     intro: 'GLP-1 Companion is a personal tracker for people prescribed semaglutide or tirzepatide. It organises what you record between appointments without suggesting a dose or replacing advice from your prescriber.',
     audience: 'Designed for adults who have already been prescribed a GLP-1 medicine and want a consistent way to record their own injections, measurements, symptoms and questions for appointments.',
     packageName: 'com.curaevita.glp1companion',
+    storeUrl: 'https://play.google.com/store/apps/details?id=com.curaevita.glp1companion',
     features: [
       { title: 'Dose and injection log', text: 'Record the medicine, prescribed dose, date, injection site and an optional note, with a next-dose countdown and site-rotation suggestion.' },
       { title: 'Weight and measurements', text: 'Follow weight, optional body-fat percentage, BMI, waist and hip measurements with unit controls and 30-day, 90-day or full-history views.' },
@@ -88,8 +90,8 @@ export const companions: Companion[] = [
     name: 'Menopause Companion',
     image: '/apps/menopause.webp',
     iconAlt: 'Coral Menopause Companion app icon from the CuraeVita family',
-    status: 'Closed testing',
-    phase: 'testing',
+    status: 'In Google Play review',
+    phase: 'review',
     accent: '#ff896f',
     description: 'Symptoms, HRT, cycles and trends brought together in one calm daily check-in.',
     seoTitle: 'Menopause and HRT Symptom Tracker',
