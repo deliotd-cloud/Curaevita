@@ -5,6 +5,7 @@ import { JsonLd } from '../../components/json-ld';
 import { SiteFooter, SiteHeader } from '../../components/site-shell';
 import { companions, getCompanion } from '../../lib/apps';
 import { guides } from '../../lib/guides';
+import { getPlayStoreUrl } from '../../lib/play-store';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -18,6 +19,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const app = getCompanion(slug);
   if (!app) return {};
+  const socialImage = app.slug === 'glp1-companion'
+    ? '/apps/glp1.png'
+    : app.slug === 'menopause-companion'
+      ? '/apps/menopause.png'
+      : '/og.png';
+  const usesAppIcon = socialImage !== '/og.png';
 
   return {
     title: app.seoTitle,
@@ -28,13 +35,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: app.seoDescription,
       url: `/apps/${app.slug}/`,
       type: 'website',
-      images: [{ url: app.image, alt: app.iconAlt }],
+      images: [{ url: socialImage, width: usesAppIcon ? 512 : 1200, height: usesAppIcon ? 512 : 630, alt: `${app.name} by CuraeVita` }],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: usesAppIcon ? 'summary' : 'summary_large_image',
       title: `${app.name} by CuraeVita`,
       description: app.seoDescription,
-      images: [app.image],
+      images: [socialImage],
     },
   };
 }
@@ -45,9 +52,28 @@ export default async function CompanionPage({ params }: PageProps) {
   if (!app) notFound();
 
   const pageUrl = `https://curaevita.com/apps/${app.slug}/`;
+  const storeUrl = app.storeUrl ? getPlayStoreUrl(app.storeUrl, `${app.slug}_page`) : undefined;
+  const shareMessage = app.slug === 'glp1-companion'
+    ? 'GLP-1 Companion is a private Android tracker for prescribed doses, progress and appointment-ready reports.'
+    : `${app.name} is a private Android tracker with appointment-ready reports.`;
+  const faqs = app.subscription ? [
+    ...app.faqs,
+    {
+      question: `How much does ${app.name} cost?`,
+      answer: `${app.subscription.price}. Google Play shows the binding price, any trial eligibility and the renewal date before you confirm.`,
+    },
+    {
+      question: 'How do I cancel the subscription?',
+      answer: 'Manage or cancel renewal in Google Play under Payments and subscriptions. Uninstalling the app does not cancel a Google Play subscription.',
+    },
+    {
+      question: 'Can I restore a previous purchase?',
+      answer: 'Yes. Use Restore purchases inside the app while signed in to the Google Play account that made the purchase.',
+    },
+  ] : app.faqs;
   const applicationSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'MobileApplication',
+    '@type': 'SoftwareApplication',
     '@id': `${pageUrl}#app`,
     name: app.name,
     description: app.seoDescription,
@@ -64,6 +90,7 @@ export default async function CompanionPage({ params }: PageProps) {
       '@type': 'Offer',
       price: '0.99',
       priceCurrency: 'GBP',
+      ...(app.storeUrl ? { availability: 'https://schema.org/InStock', url: app.storeUrl } : {}),
       description: 'Monthly subscription. Eligible new Google Play subscribers may be shown a seven-day free trial before confirming.',
     };
   }
@@ -76,7 +103,7 @@ export default async function CompanionPage({ params }: PageProps) {
   const relatedGuides = guides.filter((guide) => guide.relatedApps.includes(app.slug));
 
   return (
-    <main className="inner-shell companion-detail" style={{ '--app-accent': app.accent } as React.CSSProperties}>
+    <main className={`inner-shell companion-detail${storeUrl ? ' has-store' : ''}`} style={{ '--app-accent': app.accent } as React.CSSProperties}>
       <JsonLd data={[
         applicationSchema,
         {
@@ -91,7 +118,7 @@ export default async function CompanionPage({ params }: PageProps) {
         {
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
-          mainEntity: app.faqs.map((item) => ({
+          mainEntity: faqs.map((item) => ({
             '@type': 'Question',
             name: item.question,
             acceptedAnswer: { '@type': 'Answer', text: item.answer },
@@ -117,7 +144,7 @@ export default async function CompanionPage({ params }: PageProps) {
           <p className="app-lead">{app.intro}</p>
           <div className="hero-actions">
             {app.storeUrl ? (
-              <a className="button button-primary" href={app.storeUrl}>Get it on Google Play</a>
+              <a className="button button-primary" href={getPlayStoreUrl(app.storeUrl, 'app_hero')}>Install from Google Play</a>
             ) : app.phase === 'review' ? (
               <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update</a>
             ) : (
@@ -140,6 +167,36 @@ export default async function CompanionPage({ params }: PageProps) {
         <div><span>Account</span><strong>Not required</strong></div>
         <div><span>Health data</span><strong>Stored locally</strong></div>
       </section>
+
+      {storeUrl && app.subscription ? (
+        <section className="store-conversion-panel" aria-labelledby="store-conversion-title">
+          <div>
+            <p className="eyebrow"><span /> Available now</p>
+            <h2 id="store-conversion-title">Start your private record today.</h2>
+            <p>Install the app, review the subscription details shown by Google Play and begin recording only the information that is useful to you.</p>
+          </div>
+          <div className="store-offer-card">
+            <strong>{app.subscription.price}</strong>
+            <span>Eligible new subscribers are shown a seven-day free trial before confirming.</span>
+            <a className="button button-primary" href={getPlayStoreUrl(app.storeUrl!, 'app_value_panel')}>Install from Google Play <span aria-hidden="true">↗</span></a>
+            <small>No CuraeVita account · No advertising · Restore purchases available</small>
+          </div>
+        </section>
+      ) : app.phase === 'review' ? (
+        <section className="store-conversion-panel review-conversion-panel" aria-labelledby="store-conversion-title">
+          <div>
+            <p className="eyebrow"><span /> Coming soon</p>
+            <h2 id="store-conversion-title">Ready for its Google Play launch.</h2>
+            <p>{app.name} has been submitted for Google Play review. Its public store link will replace this update option as soon as the listing is available.</p>
+          </div>
+          <div className="store-offer-card">
+            <strong>{app.subscription?.price ?? 'Launch details soon'}</strong>
+            <span>{app.subscription?.trial}</span>
+            <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update</a>
+            <small>No launch date is promised while Google Play review is in progress.</small>
+          </div>
+        </section>
+      ) : null}
 
       <section className="content-section audience-section">
         <p className="eyebrow"><span /> Who it is for</p>
@@ -192,7 +249,11 @@ export default async function CompanionPage({ params }: PageProps) {
             <h2>{app.subscription.price}</h2>
             <p>{app.subscription.trial}</p>
           </div>
-          <a className="button button-primary" href="/terms/">Read subscription terms</a>
+          <div className="subscription-actions">
+            {app.storeUrl ? <a className="button button-primary" href={getPlayStoreUrl(app.storeUrl, 'app_subscription')}>Install from Google Play</a> : null}
+            <a className="text-link" href="/terms/">Read subscription terms <span aria-hidden="true">→</span></a>
+            <a className="text-link" href="https://support.google.com/googleplay/answer/7018481" rel="external">Manage a Play subscription <span aria-hidden="true">↗</span></a>
+          </div>
         </section>
       ) : (
         <section className="content-section development-note">
@@ -208,7 +269,7 @@ export default async function CompanionPage({ params }: PageProps) {
           <h2>Clear limits and practical answers.</h2>
         </div>
         <div className="faq-list">
-          {app.faqs.map((item) => (
+          {faqs.map((item) => (
             <details key={item.question}>
               <summary>{item.question}</summary>
               <p>{item.answer}</p>
@@ -221,6 +282,21 @@ export default async function CompanionPage({ params }: PageProps) {
         <strong>Important health information</strong>
         <p>{app.name} is a personal tracking and reporting tool. It does not diagnose, prescribe, recommend treatment or monitor emergencies. Follow advice from an appropriate healthcare professional and seek urgent help when needed.</p>
       </aside>
+
+      {app.storeUrl ? (
+        <section className="share-section" aria-labelledby="share-app-title">
+          <div>
+            <p className="eyebrow"><span /> Help someone find it</p>
+            <h2 id="share-app-title">Share the app, not medical advice.</h2>
+            <p>If this kind of personal record may be useful to someone you know, send them the public Google Play listing so they can review it for themselves.</p>
+          </div>
+          <div className="share-links" aria-label={`Share ${app.name}`}>
+            <a href={`https://wa.me/?text=${encodeURIComponent(`${shareMessage} ${getPlayStoreUrl(app.storeUrl, 'share_whatsapp')}`)}`} rel="external">Share by WhatsApp</a>
+            <a href={`mailto:?subject=${encodeURIComponent(app.name)}&body=${encodeURIComponent(`${shareMessage}\n\n${getPlayStoreUrl(app.storeUrl, 'share_email')}`)}`}>Share by email</a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(getPlayStoreUrl(app.storeUrl, 'share_facebook'))}`} rel="external">Share on Facebook</a>
+          </div>
+        </section>
+      ) : null}
 
       <section className="related-section app-guide-section">
         <div>
@@ -253,6 +329,13 @@ export default async function CompanionPage({ params }: PageProps) {
           ))}
         </div>
       </section>
+
+      {app.storeUrl ? (
+        <aside className="mobile-store-cta" aria-label={`${app.name} purchase link`}>
+          <span><strong>{app.name}</strong><small>{app.subscription?.price}</small></span>
+          <a href={getPlayStoreUrl(app.storeUrl, 'mobile_sticky')}>Get it on Google Play</a>
+        </aside>
+      ) : null}
 
       <SiteFooter />
     </main>
