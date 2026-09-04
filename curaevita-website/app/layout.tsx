@@ -5,16 +5,16 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://curaevita.com'),
   applicationName: 'CuraeVita Health Apps',
   title: {
-    default: 'CuraeVita Health Apps | Private Android Companions',
+    default: 'CuraeVita Health Apps | GLP-1 Tracker for Android',
     template: '%s | CuraeVita',
   },
-  description: 'Privacy-conscious Android health tracking apps for GLP-1 treatment, menopause, ADHD, digestive symptoms and migraine records.',
+  description: 'Private Android health tracking apps. Get GLP-1 Companion for dose, injection-site, weight and side-effect records with PDF reports. Menopause Companion is coming soon.',
   alternates: {
     canonical: '/',
     types: { 'application/rss+xml': '/feed.xml' },
   },
   category: 'health',
-  keywords: ['health tracking apps', 'Android health tracker', 'personal health record', 'symptom tracker', 'medication tracker'],
+  keywords: ['GLP-1 tracker app', 'GLP-1 injection log', 'semaglutide tracker', 'tirzepatide tracker', 'Android health tracker', 'menopause symptom tracker'],
   icons: {
     icon: '/favicon.svg',
     apple: '/icon.png',
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'CuraeVita Health Apps | Private Android Companions',
-    description: 'Focused health trackers designed around privacy, useful reports and clearer healthcare conversations.',
+    title: 'CuraeVita Health Apps | GLP-1 Companion for Android',
+    description: 'Get GLP-1 Companion for private dose, injection-site, weight and side-effect tracking. Menopause Companion is coming soon.',
     type: 'website',
     url: '/',
     siteName: 'CuraeVita Health Apps',
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CuraeVita Health Apps | Private Android Companions',
-    description: 'Focused health trackers designed around privacy, useful reports and clearer healthcare conversations.',
+    title: 'CuraeVita Health Apps | GLP-1 Companion for Android',
+    description: 'Get GLP-1 Companion for private dose, injection-site, weight and side-effect tracking. Menopause Companion is coming soon.',
     images: ['/og.png'],
   },
 };
@@ -51,7 +51,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-GB">
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
+        {children}
+      </body>
     </html>
   );
 }
