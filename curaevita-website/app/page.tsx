@@ -85,9 +85,9 @@ export default function Home() {
       </section>
 
       <section className="status-band" aria-label="Current release status">
-        <div><strong>2</strong><span>apps in closed testing</span></div>
+        <div><strong>1</strong><span>app available on Google Play</span></div>
+        <div><strong>1</strong><span>app in Google Play review</span></div>
         <div><strong>3</strong><span>apps in internal testing</span></div>
-        <div><strong>£0.99</strong><span>UK monthly price for new subscribers</span></div>
         <div><strong>0</strong><span>advertising trackers</span></div>
       </section>
 
@@ -186,7 +186,7 @@ export default function Home() {
         <Image src="/curaevita-family.webp" alt="" width="88" height="88" loading="lazy" decoding="async" />
         <p className="eyebrow"><span /> Launch updates</p>
         <h2>Follow the CuraeVita journey.</h2>
-        <p>GLP-1 Companion and Menopause Companion are in closed testing. ADHD, Gut and Migraine Companions are in internal testing.</p>
+        <p>GLP-1 Companion is available on Google Play. Menopause Companion has been submitted for Google Play review. ADHD, Gut and Migraine Companions remain in internal testing.</p>
         <a className="button button-light" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Email CuraeVita</a>
       </section>
 
