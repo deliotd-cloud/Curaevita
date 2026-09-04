@@ -5,6 +5,7 @@ import { JsonLd } from '../../components/json-ld';
 import { SiteFooter, SiteHeader } from '../../components/site-shell';
 import { companions } from '../../lib/apps';
 import { getGuide, guides } from '../../lib/guides';
+import { getPlayStoreUrl } from '../../lib/play-store';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -48,6 +49,8 @@ export default async function GuidePage({ params }: PageProps) {
   const relatedApps = guide.relatedApps
     .map((appSlug) => companions.find((app) => app.slug === appSlug))
     .filter((app) => app !== undefined);
+  const promotedApp = relatedApps.find((app) => app.storeUrl);
+  const upcomingApp = relatedApps.find((app) => app.phase === 'review');
 
   return (
     <main className="inner-shell guide-detail">
@@ -58,8 +61,8 @@ export default async function GuidePage({ params }: PageProps) {
           '@id': `${pageUrl}#article`,
           headline: guide.title,
           description: guide.description,
-          datePublished: '2026-08-30',
-          dateModified: '2026-08-30',
+          datePublished: guide.publishedDate,
+          dateModified: guide.modifiedDate,
           mainEntityOfPage: pageUrl,
           author: { '@id': 'https://curaevita.com/#organization' },
           publisher: { '@id': 'https://curaevita.com/#organization' },
@@ -129,6 +132,28 @@ export default async function GuidePage({ params }: PageProps) {
           </div>
         </div>
       </article>
+
+      {promotedApp?.storeUrl ? (
+        <aside className="guide-store-cta">
+          <Image src={promotedApp.image} alt="" width="82" height="82" loading="lazy" decoding="async" />
+          <div>
+            <span>Related Android app</span>
+            <strong>Keep this record in {promotedApp.name}</strong>
+            <p>Private on-device tracking, appointment-ready PDF reports and no CuraeVita account. {promotedApp.subscription?.price}.</p>
+          </div>
+          <a className="button button-primary" href={getPlayStoreUrl(promotedApp.storeUrl, `guide_${guide.slug}`)}>Install from Google Play</a>
+        </aside>
+      ) : upcomingApp ? (
+        <aside className="guide-store-cta upcoming-guide-cta">
+          <Image src={upcomingApp.image} alt="" width="82" height="82" loading="lazy" decoding="async" />
+          <div>
+            <span>Coming soon to Google Play</span>
+            <strong>{upcomingApp.name}</strong>
+            <p>Private symptom, HRT and appointment-report tracking is currently in Google Play review.</p>
+          </div>
+          <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update</a>
+        </aside>
+      ) : null}
 
       <aside className="medical-note">
         <strong>Important health information</strong>
