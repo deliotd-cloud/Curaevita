@@ -59,7 +59,7 @@ export default function AboutPage() {
             <h2>Built carefully, released in stages.</h2>
           </div>
           <div>
-            <p>GLP-1 Companion and Menopause Companion are in Google Play closed testing. ADHD Companion, Gut Companion and Migraine Companion are in internal testing while their store and subscription setup is completed.</p>
+            <p>GLP-1 Companion is available on Google Play. Menopause Companion has been submitted for Google Play review. ADHD Companion, Gut Companion and Migraine Companion remain in internal testing while their store and subscription setup is completed.</p>
             <p>Status descriptions on this website are intentionally conservative. A Play Store launch date is not stated until it is firm.</p>
             <a className="text-link" href="/apps/">Explore the Companion family <span aria-hidden="true">→</span></a>
           </div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
 
         <section className="review-note">
           <strong>Information standards</strong>
-          <p>Product descriptions are checked against the implemented app specifications. Health-related copy uses plain limitations and avoids diagnosis or treatment claims. Website content was last reviewed on 30 August 2026.</p>
+          <p>Product descriptions are checked against the implemented app specifications. Health-related copy uses plain limitations and avoids diagnosis or treatment claims. Website content was last reviewed on 4 September 2026.</p>
           <a href="/editorial-standards/">Read the full editorial standards</a>
         </section>
       </article>
