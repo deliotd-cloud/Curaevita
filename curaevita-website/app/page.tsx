@@ -1,7 +1,20 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { JsonLd } from './components/json-ld';
 import { SiteFooter, SiteHeader } from './components/site-shell';
 import { companions } from './lib/apps';
+import { guides } from './lib/guides';
+import { getGlp1PlayStoreUrl } from './lib/play-store';
+
+export const metadata: Metadata = {
+  title: 'GLP-1 Tracker App and Private Android Health Companions',
+  description: 'Get GLP-1 Companion for private dose, injection-site, weight and side-effect tracking with PDF reports. Menopause Companion is coming soon.',
+  alternates: { canonical: '/' },
+};
+
+const glp1Companion = companions.find((app) => app.slug === 'glp1-companion')!;
+const menopauseCompanion = companions.find((app) => app.slug === 'menopause-companion')!;
+const featuredGuides = guides.filter((guide) => guide.relatedApps.includes('glp1-companion')).slice(0, 3);
 
 const principles = [
   {
@@ -23,7 +36,7 @@ const principles = [
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd data={[
         {
           '@context': 'https://schema.org',
@@ -34,7 +47,10 @@ export default function Home() {
           url: 'https://curaevita.com/',
           logo: 'https://curaevita.com/icon.png',
           email: 'mailto:eliviontechnologies@gmail.com',
-          sameAs: ['https://github.com/deliotd-cloud/Curaevita'],
+          sameAs: [
+            'https://play.google.com/store/apps/developer?id=CuraeVita',
+            'https://github.com/deliotd-cloud/Curaevita',
+          ],
           description: 'Independent, privacy-conscious Android health tracking apps for personal records and clearer healthcare conversations.',
         },
         {
@@ -58,9 +74,10 @@ export default function Home() {
             prepare for appointments and keep your health story close, without ads or unnecessary accounts.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="/apps/">Meet the Companions <span aria-hidden="true">↘</span></a>
-            <a className="text-link" href="/privacy/">How your data is handled <span aria-hidden="true">→</span></a>
+            <a className="button button-primary" href={getGlp1PlayStoreUrl('home_hero')}>Get GLP-1 Companion <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href="/apps/">Meet all Companions <span aria-hidden="true">→</span></a>
           </div>
+          <p className="hero-offer-note"><strong>£0.99/month</strong> · Eligible new subscribers are shown a seven-day free trial before confirming in Google Play.</p>
           <ul className="trust-list" aria-label="CuraeVita principles">
             <li><span aria-hidden="true">✓</span> Private by design</li>
             <li><span aria-hidden="true">✓</span> Appointment-ready reports</li>
@@ -89,6 +106,38 @@ export default function Home() {
         <div><strong>1</strong><span>app in Google Play review</span></div>
         <div><strong>3</strong><span>apps in internal testing</span></div>
         <div><strong>0</strong><span>advertising trackers</span></div>
+      </section>
+
+      <section className="section launch-spotlight" aria-labelledby="glp1-launch-title">
+        <div className="launch-visual" style={{ '--accent': glp1Companion.accent } as React.CSSProperties}>
+          <span className="launch-live-pill">Available now</span>
+          <Image src={glp1Companion.image} alt={glp1Companion.iconAlt} width="220" height="220" loading="lazy" decoding="async" />
+          <small>Android · No CuraeVita account required</small>
+        </div>
+        <div className="launch-copy">
+          <p className="eyebrow"><span /> Now on Google Play</p>
+          <h2 id="glp1-launch-title">A private GLP-1 record that is ready when your appointment is.</h2>
+          <p>Keep prescribed doses, injection sites, weight, measurements and side-effect observations together. Create a PDF for 30 days, 90 days or your full recorded history whenever you choose.</p>
+          <ul className="launch-benefits">
+            <li>Health entries stay on your device</li>
+            <li>No advertising and no unnecessary account</li>
+            <li>Restore purchases inside the app</li>
+          </ul>
+          <div className="hero-actions">
+            <a className="button button-primary" href={getGlp1PlayStoreUrl('home_launch_spotlight')}>Install from Google Play <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href="/apps/glp1-companion/">See every feature <span aria-hidden="true">→</span></a>
+          </div>
+          <p className="purchase-reassurance">£0.99 per month after any trial shown to you by Google Play. Cancel renewal through Google Play; uninstalling alone does not cancel a subscription.</p>
+        </div>
+        <aside className="coming-soon-card">
+          <Image src={menopauseCompanion.image} alt="" width="58" height="58" loading="lazy" decoding="async" />
+          <div>
+            <span>Coming soon</span>
+            <strong>Menopause Companion</strong>
+            <p>Already submitted for Google Play review.</p>
+          </div>
+          <a href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update <span aria-hidden="true">→</span></a>
+        </aside>
       </section>
 
       <section className="section companions-section" id="companions">
@@ -162,10 +211,11 @@ export default function Home() {
           <h2>A small price for a focused companion.</h2>
         </div>
         <div className="price-card">
-          <p>UK price for new GLP-1 and Menopause subscribers</p>
+          <p>GLP-1 Companion · available now</p>
           <strong><sup>£</sup>0.99<small>/ month</small></strong>
           <span>Google Play shows whether your account is eligible for the seven-day free trial before you confirm.</span>
-          <a className="button button-primary" href="/terms/">View subscription terms</a>
+          <a className="button button-primary" href={getGlp1PlayStoreUrl('home_pricing')}>Install from Google Play</a>
+          <a className="price-terms-link" href="/terms/">View subscription terms</a>
         </div>
       </section>
 
@@ -176,10 +226,15 @@ export default function Home() {
           <p>Non-diagnostic guides for symptom diaries, appointment reports and safer health notes on Android.</p>
         </div>
         <div className="home-guide-links">
-          <a href="/guides/symptom-diary-for-an-appointment/"><span>01</span><strong>Prepare a symptom diary for an appointment</strong><i aria-hidden="true">→</i></a>
-          <a href="/guides/medication-tracking-report/"><span>02</span><strong>Build a clear medication tracking report</strong><i aria-hidden="true">→</i></a>
-          <a href="/guides/protect-health-notes-on-android/"><span>03</span><strong>Keep private health notes safer on Android</strong><i aria-hidden="true">→</i></a>
+          {featuredGuides.map((guide, index) => (
+            <a href={`/guides/${guide.slug}/`} key={guide.slug}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{guide.title}</strong>
+              <i aria-hidden="true">→</i>
+            </a>
+          ))}
         </div>
+        <a className="section-more text-link" href="/guides/">Browse every CuraeVita guide <span aria-hidden="true">→</span></a>
       </section>
 
       <section className="updates-section" id="updates">
