@@ -67,6 +67,10 @@ export default async function CompanionPage({ params }: PageProps) {
       description: 'Monthly subscription. Eligible new Google Play subscribers may be shown a seven-day free trial before confirming.',
     };
   }
+  if (app.storeUrl) {
+    applicationSchema.installUrl = app.storeUrl;
+    applicationSchema.downloadUrl = app.storeUrl;
+  }
 
   const related = companions.filter((companion) => companion.slug !== app.slug).slice(0, 3);
   const relatedGuides = guides.filter((guide) => guide.relatedApps.includes(app.slug));
@@ -112,7 +116,13 @@ export default async function CompanionPage({ params }: PageProps) {
           <h1>{app.headline}</h1>
           <p className="app-lead">{app.intro}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Ask about testing</a>
+            {app.storeUrl ? (
+              <a className="button button-primary" href={app.storeUrl}>Get it on Google Play</a>
+            ) : app.phase === 'review' ? (
+              <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update</a>
+            ) : (
+              <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20testing%20access">Ask about testing</a>
+            )}
             <a className="text-link" href="#features">See what it tracks <span aria-hidden="true">↓</span></a>
           </div>
         </div>
