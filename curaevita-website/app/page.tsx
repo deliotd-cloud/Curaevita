@@ -36,7 +36,7 @@ const principles = [
 
 export default function Home() {
   return (
-    <main id="main-content">
+    <main>
       <JsonLd data={[
         {
           '@context': 'https://schema.org',
