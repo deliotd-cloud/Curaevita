@@ -10,7 +10,7 @@
 - [Gut Companion](https://curaevita.com/apps/gut-companion/) — digestive symptoms, Bristol stool scale entries and a meal diary.
 - [Migraine Companion](https://curaevita.com/apps/migraine-companion/) — attack, symptom, possible-trigger and medication-response records.
 
-GLP-1 Companion and Menopause Companion are in Google Play closed testing. ADHD, Gut and Migraine Companions are in internal testing.
+GLP-1 Companion is available on Google Play. Menopause Companion has been submitted for Google Play review. ADHD, Gut and Migraine Companions remain in internal testing.
 
 ## Product principles
 
