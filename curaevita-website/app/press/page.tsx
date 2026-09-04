@@ -50,7 +50,7 @@ export default function PressPage() {
 
         <section className="values-grid" aria-label="CuraeVita facts">
           <article><span>01</span><h2>Independent</h2><p>CuraeVita is developed by Elivion Technologies and is not affiliated with a medicine manufacturer or healthcare provider.</p></article>
-          <article><span>02</span><h2>Android first</h2><p>GLP-1 Companion and Menopause Companion are in Google Play closed testing. Three additional Companions are in internal testing.</p></article>
+          <article><span>02</span><h2>Android first</h2><p>GLP-1 Companion is available on Google Play. Menopause Companion is under Google Play review, with three additional Companions in internal testing.</p></article>
           <article><span>03</span><h2>Local first</h2><p>Core health entries are stored on the user’s device. Exports happen only when the user chooses.</p></article>
           <article><span>04</span><h2>Clear limits</h2><p>The apps are personal tracking tools, not diagnostic devices, treatment services or emergency monitors.</p></article>
         </section>
@@ -85,7 +85,7 @@ export default function PressPage() {
 
         <section className="review-note">
           <strong>Brand source</strong>
-          <p>For the latest status and product wording, use the individual app pages on this website. This page was reviewed on 30 August 2026.</p>
+          <p>For the latest status and product wording, use the individual app pages on this website. This page was reviewed on 4 September 2026.</p>
           <a href="/apps/">View all app pages</a>
         </section>
       </article>
