@@ -19,7 +19,7 @@ export function GET() {
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <description>${escapeXml(guide.description)}</description>
-      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <pubDate>${new Date(`${guide.publishedDate}T00:00:00.000Z`).toUTCString()}</pubDate>
     </item>`;
   }).join('\n');
 
@@ -30,7 +30,7 @@ export function GET() {
     <link>https://curaevita.com/guides/</link>
     <description>Practical, non-diagnostic guidance for personal health records, appointments and Android privacy.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 30 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 00:00:00 GMT</lastBuildDate>
     ${items}
   </channel>
 </rss>`;
