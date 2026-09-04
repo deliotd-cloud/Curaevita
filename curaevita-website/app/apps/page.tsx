@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { JsonLd } from '../components/json-ld';
 import { SiteFooter, SiteHeader } from '../components/site-shell';
 import { companions } from '../lib/apps';
+import { getPlayStoreUrl } from '../lib/play-store';
 
 export const metadata: Metadata = {
   title: 'Android Health Tracking Apps',
@@ -62,7 +63,11 @@ export default function AppsPage() {
               <p className="card-kicker">CuraeVita</p>
               <h2>{app.name}</h2>
               <p>{app.description}</p>
-              <a className="text-link" href={`/apps/${app.slug}/`}>Explore {app.name} <span aria-hidden="true">→</span></a>
+              <div className="directory-actions">
+                {app.storeUrl ? <a className="button button-primary" href={getPlayStoreUrl(app.storeUrl, 'app_directory')}>Install from Google Play</a> : null}
+                {app.phase === 'review' ? <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update</a> : null}
+                <a className="text-link" href={`/apps/${app.slug}/`}>Explore {app.name} <span aria-hidden="true">→</span></a>
+              </div>
             </div>
           </article>
         ))}
