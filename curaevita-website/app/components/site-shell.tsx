@@ -22,6 +22,19 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
             <a href="/support/">Support</a>
             <a className="nav-cta" href={getGlp1PlayStoreUrl('site_navigation')}>Get GLP-1 Companion</a>
           </div>
+          <details className="mobile-navigation">
+            <summary>Menu <span aria-hidden="true">+</span></summary>
+            <div className="mobile-navigation-links">
+              <a href="/apps/">All Companions</a>
+              <a href="/apps/glp1-companion/">GLP-1 Companion</a>
+              <a href="/apps/menopause-companion/">Menopause Companion</a>
+              <a href="/guides/">Practical guides</a>
+              <a href="/#approach">Our approach</a>
+              <a href="/about/">About CuraeVita</a>
+              <a href="/support/">Support</a>
+              <a className="button button-primary" href={getGlp1PlayStoreUrl('mobile_navigation')}>Get GLP-1 Companion ↗</a>
+            </div>
+          </details>
         </nav>
       </header>
       <span id="main-content" className="main-content-anchor" tabIndex={-1} />

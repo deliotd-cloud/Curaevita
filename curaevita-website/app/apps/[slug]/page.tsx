@@ -6,6 +6,7 @@ import { SiteFooter, SiteHeader } from '../../components/site-shell';
 import { companions, getCompanion } from '../../lib/apps';
 import { guides } from '../../lib/guides';
 import { getPlayStoreUrl } from '../../lib/play-store';
+import { appScreenshots } from '../../lib/screenshots';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -52,6 +53,7 @@ export default async function CompanionPage({ params }: PageProps) {
   if (!app) notFound();
 
   const pageUrl = `https://curaevita.com/apps/${app.slug}/`;
+  const screenshots = appScreenshots[app.slug] ?? [];
   const storeUrl = app.storeUrl ? getPlayStoreUrl(app.storeUrl, `${app.slug}_page`) : undefined;
   const shareMessage = app.slug === 'glp1-companion'
     ? 'GLP-1 Companion is a private Android tracker for prescribed doses, progress and appointment-ready reports.'
@@ -84,7 +86,7 @@ export default async function CompanionPage({ params }: PageProps) {
     publisher: { '@id': 'https://curaevita.com/#organization' },
     inLanguage: 'en-GB',
   };
-  if (app.subscription) {
+  if (app.subscription && app.storeUrl) {
     applicationSchema.isAccessibleForFree = false;
     applicationSchema.offers = {
       '@type': 'Offer',
@@ -97,6 +99,9 @@ export default async function CompanionPage({ params }: PageProps) {
   if (app.storeUrl) {
     applicationSchema.installUrl = app.storeUrl;
     applicationSchema.downloadUrl = app.storeUrl;
+  }
+  if (screenshots.length) {
+    applicationSchema.screenshot = screenshots.map((screen) => `https://curaevita.com${screen.src}`);
   }
 
   const related = companions.filter((companion) => companion.slug !== app.slug).slice(0, 3);
@@ -140,7 +145,8 @@ export default async function CompanionPage({ params }: PageProps) {
             <span>Android</span>
           </div>
           <p className="eyebrow"><span /> {app.eyebrow}</p>
-          <h1>{app.headline}</h1>
+          <h1>{app.name}</h1>
+          <p className="app-tagline">{app.headline}</p>
           <p className="app-lead">{app.intro}</p>
           <div className="hero-actions">
             {app.storeUrl ? (
@@ -153,12 +159,16 @@ export default async function CompanionPage({ params }: PageProps) {
             <a className="text-link" href="#features">See what it tracks <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <div className="app-icon-stage">
+        {screenshots.length ? <div className={`detail-preview ${app.slug === 'menopause-companion' ? 'detail-preview-menopause' : ''}`}>
+          <div className="product-name"><Image src={app.image} alt="" width={48} height={48} /><span>{app.name}</span></div>
+          <div className="phone-screen"><Image src={screenshots[0].src} alt={`${app.name}: ${screenshots[0].description} Example data.`} width={432} height={720} loading="eager" fetchPriority="high" /></div>
+          <p className="preview-disclosure">{app.phase === 'published' ? 'Actual app screen' : 'App preview'} · example data</p>
+        </div> : <div className="app-icon-stage">
           <span aria-hidden="true" />
           <Image src={app.image} alt={app.iconAlt} width="260" height="260" loading="eager" fetchPriority="high" decoding="async" />
           <small>CuraeVita Health Apps</small>
           <strong>{app.name}</strong>
-        </div>
+        </div>}
       </section>
 
       <section className="app-facts" aria-label={`${app.name} summary`}>
@@ -167,6 +177,16 @@ export default async function CompanionPage({ params }: PageProps) {
         <div><span>Account</span><strong>Not required</strong></div>
         <div><span>Health data</span><strong>Stored locally</strong></div>
       </section>
+
+      {screenshots.length ? <section className="content-section screenshot-section" aria-labelledby="screens-title">
+        <div className="content-heading"><p className="eyebrow"><span /> A closer look</p><h2 id="screens-title">See your Companion in action.</h2><p>Real app screens with illustrative records. On a small screen, swipe or scroll to explore.</p></div>
+        <div className="screenshot-gallery" tabIndex={0} role="region" aria-label={`${app.name} screenshots`}>
+          {screenshots.map((screen, index) => <figure key={screen.src}>
+            <div className="gallery-image"><Image src={screen.src} alt={`${screen.title}: ${screen.description} Example data.`} width={432} height={720} /></div>
+            <figcaption><span>0{index + 1}</span><h3>{screen.title}</h3><p>{screen.description}</p></figcaption>
+          </figure>)}
+        </div>
+      </section> : null}
 
       {storeUrl && app.subscription ? (
         <section className="store-conversion-panel" aria-labelledby="store-conversion-title">
@@ -186,7 +206,7 @@ export default async function CompanionPage({ params }: PageProps) {
         <section className="store-conversion-panel review-conversion-panel" aria-labelledby="store-conversion-title">
           <div>
             <p className="eyebrow"><span /> Coming soon</p>
-            <h2 id="store-conversion-title">Ready for its Google Play launch.</h2>
+            <h2 id="store-conversion-title">Coming soon to Google Play.</h2>
             <p>{app.name} has been submitted for Google Play review. Its public store link will replace this update option as soon as the listing is available.</p>
           </div>
           <div className="store-offer-card">

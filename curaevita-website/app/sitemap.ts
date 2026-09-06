@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { companions } from './lib/apps';
 import { guides } from './lib/guides';
+import { appScreenshots } from './lib/screenshots';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-09-04T00:00:00.000Z');
+  const lastModified = new Date('2026-09-06T00:00:00.000Z');
   const pages: MetadataRoute.Sitemap = [
     { url: 'https://curaevita.com/', lastModified, changeFrequency: 'weekly', priority: 1, images: ['https://curaevita.com/og.png'] },
     { url: 'https://curaevita.com/apps/', lastModified, changeFrequency: 'weekly', priority: 0.9 },
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly' as const,
       priority: app.phase === 'published' ? 0.95 : app.phase === 'review' ? 0.85 : 0.65,
-      images: [`https://curaevita.com${app.image}`],
+      images: [`https://curaevita.com${app.image}`, ...(appScreenshots[app.slug] ?? []).map((screen) => `https://curaevita.com${screen.src}`)],
     })),
     ...guides.map((guide) => ({
       url: `https://curaevita.com/guides/${guide.slug}/`,
