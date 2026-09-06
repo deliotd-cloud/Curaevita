@@ -47,3 +47,44 @@ assert.ok(!appData.find((item) => item['@type'] === 'SoftwareApplication')?.offe
 assert.ok(readFileSync(path.join(root, 'robots.txt'), 'utf8').includes('https://curaevita.com/sitemap.xml'));
 assert.ok(existsSync(path.join(root, 'google1a44c224d2456e8e.html')), 'Google verification file lost');
 console.log(`PASS: ${pages.length} pages, unique titles/canonicals, ${schemas} structured-data blocks, ${images} image uses, internal links/assets, release wording and Google verification.`);
+
+// Keep the approved palette and immediate visibility from drifting in future edits.
+const baseCss = readFileSync('app/globals.css', 'utf8');
+const themeCss = readFileSync('app/refined.css', 'utf8');
+const header = readFileSync('app/components/site-shell.tsx', 'utf8');
+const tokens = Object.fromEntries([...baseCss.matchAll(/(--[\w-]+):\s*(#[a-f\d]{6});/gi)].map((match) => [match[1], match[2]]));
+const declarations = (css, selector) => {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return css.match(new RegExp(`${escaped}\\s*\\{([^}]+)\\}`))?.[1] ?? '';
+};
+for (const selector of ['.product-stage', '.feature-preview', '.pricing-section', '.updates-section', '.detail-preview', '.gallery-image', '.directory-visual']) {
+  assert.ok(declarations(themeCss, selector).includes('background: var(--panel-mint)'), `Inconsistent panel colour: ${selector}`);
+}
+assert.ok(declarations(themeCss, '.menopause-spotlight').includes('var(--panel-rose)'));
+assert.ok(declarations(themeCss, '.detail-preview-menopause').includes('var(--panel-rose)'));
+assert.ok(header.includes('className="button button-primary nav-cta"'), 'Header download styling diverged');
+assert.ok(baseCss.includes('.site-nav, .hero-copy > * { animation: none; }'), 'Essential first-view content must not fade in');
+assert.ok(themeCss.includes('animation: preview-settle 220ms'), 'Preview entrance should remain brief');
+assert.ok(themeCss.includes('@media (prefers-reduced-motion: reduce)'), 'Reduced-motion support lost');
+const luminance = (hex) => {
+  const rgb = hex.slice(1).match(/../g).map((value) => parseInt(value, 16) / 255).map((value) => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4);
+  return .2126 * rgb[0] + .7152 * rgb[1] + .0722 * rgb[2];
+};
+const contrast = (foreground, background) => {
+  const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+  return (values[0] + .05) / (values[1] + .05);
+};
+for (const token of ['--teal-deep', '--action-hover', '--plum', '--plum-hover']) {
+  assert.ok(contrast('#ffffff', tokens[token]) >= 4.5, `Insufficient button contrast: ${token}`);
+}
+const badgeBackgrounds = new Set();
+for (const status of ['published', 'review', 'testing']) {
+  const rule = declarations(baseCss, `.status-pill.${status}`);
+  const background = rule.match(/background: (#[a-f\d]{6})/i)?.[1];
+  const foreground = rule.match(/color: (#[a-f\d]{6})/i)?.[1];
+  assert.ok(background && foreground && contrast(foreground, background) >= 4.5, `Insufficient badge contrast: ${status}`);
+  badgeBackgrounds.add(background);
+}
+assert.equal(badgeBackgrounds.size, 3, 'Live, review and testing must have distinct badge colours');
+assert.ok(declarations(baseCss, '.status-pill.testing').includes('background: #edf0f3'), 'Testing badges must stay neutral');
+console.log('PASS: shared mint panels, retained Menopause accents, matching download buttons, distinct status badges, text contrast and first-view motion rules.');

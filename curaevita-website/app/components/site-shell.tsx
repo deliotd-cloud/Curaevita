@@ -20,7 +20,7 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
             <a href="/#approach">Our approach</a>
             <a href="/about/">About</a>
             <a href="/support/">Support</a>
-            <a className="nav-cta" href={getGlp1PlayStoreUrl('site_navigation')}>Get GLP-1 Companion</a>
+            <a className="button button-primary nav-cta" href={getGlp1PlayStoreUrl('site_navigation')}>Get GLP-1 Companion</a>
           </div>
           <details className="mobile-navigation">
             <summary>Menu <span aria-hidden="true">+</span></summary>
