@@ -28,6 +28,9 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
               <a href="/apps/">All Companions</a>
               <a href="/apps/glp1-companion/">GLP-1 Companion</a>
               <a href="/apps/menopause-companion/">Menopause Companion</a>
+              <a href="/apps/adhd-companion/">ADHD Companion</a>
+              <a href="/apps/gut-companion/">Gut Companion</a>
+              <a href="/apps/migraine-companion/">Migraine Companion</a>
               <a href="/guides/">Practical guides</a>
               <a href="/#approach">Our approach</a>
               <a href="/about/">About CuraeVita</a>
@@ -59,7 +62,7 @@ export function SiteFooter() {
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
         <a href="/support/">Support</a>
-        <a href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Menopause launch updates</a>
+        <a href="/apps/menopause-companion/">Menopause Companion</a>
         <a href="https://github.com/deliotd-cloud/Curaevita" rel="me">GitHub</a>
       </nav>
     </footer>

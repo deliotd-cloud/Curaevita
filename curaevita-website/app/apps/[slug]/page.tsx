@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const usesAppIcon = socialImage !== '/og.png';
 
   return {
-    title: app.seoTitle,
+    title: `${app.name}: ${app.seoTitle}`,
     description: app.seoDescription,
     alternates: { canonical: `/apps/${app.slug}/` },
     openGraph: {
@@ -62,7 +62,7 @@ export default async function CompanionPage({ params }: PageProps) {
     ...app.faqs,
     {
       question: `How much does ${app.name} cost?`,
-      answer: `${app.subscription.price}. Google Play shows the binding price, any trial eligibility and the renewal date before you confirm.`,
+      answer: `${app.subscription.price} per app in the UK. Each Companion has a separate subscription. Google Play shows your local price, any seven-day trial eligibility and the renewal date before you confirm.`,
     },
     {
       question: 'How do I cancel the subscription?',
@@ -82,6 +82,8 @@ export default async function CompanionPage({ params }: PageProps) {
     url: pageUrl,
     image: `https://curaevita.com${app.image}`,
     operatingSystem: 'Android',
+    identifier: app.packageName,
+    featureList: app.features.map((feature) => feature.title),
     applicationCategory: 'HealthApplication',
     publisher: { '@id': 'https://curaevita.com/#organization' },
     inLanguage: 'en-GB',
@@ -93,7 +95,13 @@ export default async function CompanionPage({ params }: PageProps) {
       price: '0.99',
       priceCurrency: 'GBP',
       ...(app.storeUrl ? { availability: 'https://schema.org/InStock', url: app.storeUrl } : {}),
-      description: 'Monthly subscription. Eligible new Google Play subscribers may be shown a seven-day free trial before confirming.',
+      description: 'UK monthly subscription per app, not a one-off purchase. Local prices vary. Eligible new subscribers may receive a seven-day free trial.',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '0.99',
+        priceCurrency: 'GBP',
+        billingDuration: 'P1M',
+      },
     };
   }
   if (app.storeUrl) {
@@ -104,7 +112,7 @@ export default async function CompanionPage({ params }: PageProps) {
     applicationSchema.screenshot = screenshots.map((screen) => `https://curaevita.com${screen.src}`);
   }
 
-  const related = companions.filter((companion) => companion.slug !== app.slug).slice(0, 3);
+  const related = companions.filter((companion) => companion.slug !== app.slug);
   const relatedGuides = guides.filter((guide) => guide.relatedApps.includes(app.slug));
 
   return (
@@ -173,7 +181,7 @@ export default async function CompanionPage({ params }: PageProps) {
 
       <section className="app-facts" aria-label={`${app.name} summary`}>
         <div><span>Availability</span><strong>{app.status}</strong></div>
-        <div><span>Platform</span><strong>Android first</strong></div>
+        <div><span>Platform</span><strong>Android</strong></div>
         <div><span>Account</span><strong>Not required</strong></div>
         <div><span>Health data</span><strong>Stored locally</strong></div>
       </section>
@@ -197,7 +205,7 @@ export default async function CompanionPage({ params }: PageProps) {
           </div>
           <div className="store-offer-card">
             <strong>{app.subscription.price}</strong>
-            <span>Eligible new subscribers are shown a seven-day free trial before confirming.</span>
+            <span>UK price per app. Eligible new subscribers may receive a seven-day free trial. Google Play confirms your local price and eligibility.</span>
             <a className="button button-primary" href={getPlayStoreUrl(app.storeUrl!, 'app_value_panel')}>Install from Google Play <span aria-hidden="true">↗</span></a>
             <small>No CuraeVita account · No advertising · Restore purchases available</small>
           </div>

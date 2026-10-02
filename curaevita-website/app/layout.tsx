@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: 'CuraeVita Health Apps | GLP-1 Tracker for Android',
     template: '%s | CuraeVita',
   },
-  description: 'Private Android health tracking apps. Get GLP-1 Companion for dose, injection-site, weight and side-effect records with PDF reports. Menopause Companion is coming soon.',
+  description: 'Download CuraeVita apps for GLP-1, menopause, ADHD, gut symptoms and migraine on Google Play. Private Android diaries with appointment-ready PDF reports.',
   alternates: {
     canonical: '/',
     types: { 'application/rss+xml': '/feed.xml' },
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'CuraeVita Health Apps | GLP-1 Companion for Android',
-    description: 'Get GLP-1 Companion for private dose, injection-site, weight and side-effect tracking. Menopause Companion is coming soon.',
+    title: 'CuraeVita | Five Private Health Tracker Apps for Android',
+    description: 'Download CuraeVita apps for GLP-1, menopause, ADHD, gut symptoms and migraine on Google Play. Private Android diaries with appointment-ready PDF reports.',
     type: 'website',
     url: '/',
     siteName: 'CuraeVita Health Apps',
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CuraeVita Health Apps | GLP-1 Companion for Android',
-    description: 'Get GLP-1 Companion for private dose, injection-site, weight and side-effect tracking. Menopause Companion is coming soon.',
+    title: 'CuraeVita | Five Private Health Tracker Apps for Android',
+    description: 'Download CuraeVita apps for GLP-1, menopause, ADHD, gut symptoms and migraine on Google Play. Private Android diaries with appointment-ready PDF reports.',
     images: ['/og.png'],
   },
 };

@@ -4,11 +4,11 @@ import { JsonLd } from './components/json-ld';
 import { SiteFooter, SiteHeader } from './components/site-shell';
 import { companions } from './lib/apps';
 import { guides } from './lib/guides';
-import { getGlp1PlayStoreUrl } from './lib/play-store';
+import { getGlp1PlayStoreUrl, getPlayStoreUrl } from './lib/play-store';
 
 export const metadata: Metadata = {
   title: { absolute: 'CuraeVita | Private Health Apps & GLP-1 Tracker for Android' },
-  description: 'Get GLP-1 Companion for private dose, injection-site, weight and side-effect tracking with PDF reports. Menopause Companion is coming soon.',
+  description: 'Download CuraeVita apps for GLP-1, menopause, ADHD, gut symptoms and migraine on Google Play. Private Android diaries with appointment-ready PDF reports.',
   alternates: { canonical: '/' },
 };
 
@@ -75,9 +75,9 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href={getGlp1PlayStoreUrl('home_hero')}>Get GLP-1 Companion <span aria-hidden="true">↗</span></a>
-            <a className="text-link" href="#companions">Explore the family <span aria-hidden="true">↓</span></a>
+            <a className="text-link" href="/apps/">Choose from all five apps</a>
           </div>
-          <p className="hero-offer-note"><strong>£0.99/month.</strong> A seven-day free trial for eligible new subscribers. Google Play confirms your offer before you subscribe.</p>
+          <p className="hero-offer-note"><strong>All five apps now on Google Play.</strong> £0.99/month per app in the UK after a seven-day free trial for eligible new subscribers. Google Play confirms your local offer before you subscribe.</p>
           <ul className="trust-list" aria-label="CuraeVita principles">
             <li><span aria-hidden="true">✓</span> Private by design</li>
             <li><span aria-hidden="true">✓</span> Appointment-ready reports</li>
@@ -133,13 +133,13 @@ export default function Home() {
       <section className="section menopause-spotlight" aria-labelledby="menopause-title">
         <div className="menopause-copy">
           <div className="product-name"><Image src={menopauseCompanion.image} alt="" width={42} height={42} /><span>Menopause Companion</span></div>
-          <p className="eyebrow"><span /> Coming soon on Android</p>
+          <p className="eyebrow"><span /> Available on Google Play</p>
           <h2 id="menopause-title">Every day is different.<br /><em>Keep the whole picture.</em></h2>
           <p>A place for symptom check-ins, hot flashes, mood and HRT records. Build a personal history you can bring to your next healthcare conversation.</p>
           <ul className="menopause-topics"><li>Symptom diaries</li><li>HRT tracking</li><li>PDF reports</li></ul>
-          <div className="hero-actions"><a className="button button-primary" href="/apps/menopause-companion/">Explore Menopause Companion <span aria-hidden="true">→</span></a></div>
-          <a className="text-link" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Email me when it launches <span aria-hidden="true">↗</span></a>
-          <p className="launch-status-note">Not yet publicly available. No launch date is promised while Google Play review is in progress.</p>
+          <div className="hero-actions"><a className="button button-primary" href={getPlayStoreUrl(menopauseCompanion.storeUrl!, 'home_menopause')}>Install from Google Play</a></div>
+          <a className="text-link" href="/apps/menopause-companion/">Explore Menopause Companion</a>
+          <p className="launch-status-note">£0.99 per month in the UK after any eligible seven-day trial. Google Play confirms the terms before you subscribe.</p>
         </div>
         <div className="menopause-screen-wrap"><div className="phone-screen"><Image src="/screens/menopause-today.png" alt="Menopause Companion daily dashboard with example symptom, hot-flash and mood entries" width={432} height={720} /></div><p className="preview-disclosure">App preview · example data</p></div>
       </section>
@@ -148,7 +148,7 @@ export default function Home() {
         <div className="section-heading">
           <p className="eyebrow"><span /> The Companion family</p>
           <h2>A family of apps.<br />A more personal kind of care.</h2>
-          <p>Each app concentrates on the details that matter for its community while keeping the same calm CuraeVita experience.</p>
+          <p>GLP-1, Menopause, ADHD, Gut and Migraine Companion are all available on Google Play. Choose a focused diary for the details you want to record.</p>
         </div>
         <div className="app-grid">
           {companions.map((app, index) => (
@@ -214,14 +214,14 @@ export default function Home() {
         <div>
           <p className="eyebrow"><span /> Straightforward subscription</p>
           <h2>A little support.<br />A straightforward price.</h2>
-          <p className="pricing-explainer">GLP-1 Companion is £0.99 per month in the UK, with a seven-day free trial for eligible new subscribers. No advertising and no CuraeVita account to create.</p>
+          <p className="pricing-explainer">Each Companion is £0.99 per month in the UK, with a seven-day free trial for eligible new subscribers. Subscriptions are separate for each app. No advertising and no CuraeVita account to create.</p>
         </div>
         <div className="price-card">
-          <p>GLP-1 Companion · available now</p>
+          <p>Each Companion · separate subscription</p>
           <strong><sup>£</sup>0.99<small>/ month</small></strong>
           <span>Google Play shows whether your account is eligible for the seven-day free trial before you confirm.</span>
           <p className="renewal-note">Renews monthly unless cancelled in Google Play. Uninstalling the app does not cancel your subscription. Local prices may vary.</p>
-          <a className="button button-primary" href={getGlp1PlayStoreUrl('home_pricing')}>Install from Google Play</a>
+          <a className="button button-primary" href="/apps/">Choose your Companion</a>
           <a className="price-terms-link" href="/terms/">View subscription terms</a>
         </div>
       </section>
@@ -246,10 +246,10 @@ export default function Home() {
 
       <section className="updates-section" id="updates">
         <Image src="/curaevita-family.webp" alt="" width="88" height="88" loading="lazy" decoding="async" />
-        <p className="eyebrow"><span /> Launch updates</p>
-        <h2>Follow the CuraeVita journey.</h2>
-        <p>GLP-1 Companion is available on Google Play. Menopause Companion has been submitted for Google Play review. ADHD, Gut and Migraine Companions remain in internal testing.</p>
-        <a className="button button-light" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20launch%20updates">Email CuraeVita</a>
+        <p className="eyebrow"><span /> Available now</p>
+        <h2>Find your Companion on Google Play.</h2>
+        <p>Explore all five apps, compare what they record and choose the Companion that fits your personal health diary.</p>
+        <a className="button button-light" href="/apps/">See all five Android apps</a>
       </section>
 
       <SiteFooter />

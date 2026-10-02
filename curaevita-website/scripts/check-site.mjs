@@ -38,12 +38,28 @@ for (const page of pages) {
     assert.ok(existsSync(target) || existsSync(path.join(target, 'index.html')), `Broken local link/asset ${match[1]} on ${pathname}`);
   }
 }
-const glp = readFileSync(path.join(root, 'apps/glp1-companion/index.html'), 'utf8');
-assert.ok(glp.includes('com.curaevita.glp1companion') && glp.includes('£0.99'), 'GLP-1 purchase path or price missing');
-const menopause = readFileSync(path.join(root, 'apps/menopause-companion/index.html'), 'utf8');
-assert.ok(menopause.includes('Coming soon to Google Play.'), 'Menopause must not be presented as released');
-const appData = [...menopause.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((match) => JSON.parse(match[1]));
-assert.ok(!appData.find((item) => item['@type'] === 'SoftwareApplication')?.offers, 'Unreleased app must not advertise a purchasable offer');
+for (const [slug, packageName] of [
+  ['glp1-companion', 'com.curaevita.glp1companion'],
+  ['menopause-companion', 'com.curaevita.menopausecompanion'],
+  ['adhd-companion', 'com.curaevita.adhdcompanion'],
+  ['gut-companion', 'com.curaevita.gutcompanion'],
+  ['migraine-companion', 'com.curaevita.migrainecompanion'],
+]) {
+  const html = readFileSync(path.join(root, 'apps', slug, 'index.html'), 'utf8');
+  const data = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((match) => JSON.parse(match[1]));
+  const app = data.find((item) => item['@type'] === 'SoftwareApplication');
+  assert.equal(new URL(app.installUrl).searchParams.get('id'), packageName);
+  assert.equal(app.offers.price, '0.99');
+  assert.equal(app.offers.priceCurrency, 'GBP');
+  assert.equal(app.offers.priceSpecification.billingDuration, 'P1M');
+  assert.ok(html.includes('Install from Google Play') && html.includes('seven-day') && html.includes('£0.99'));
+  assert.ok(!/coming soon|internal testing|not yet publicly|planned release/i.test(html), `Stale launch copy: ${slug}`);
+  assert.ok(!app.aggregateRating && !app.review, 'Do not invent reviews to qualify for rich results');
+}
+for (const route of ['', 'apps', 'about', 'press']) {
+  const html = readFileSync(path.join(root, route, 'index.html'), 'utf8');
+  assert.ok(!/coming soon|internal testing|not yet publicly|launch updates/i.test(html), `Stale launch copy: ${route}`);
+}
 assert.ok(readFileSync(path.join(root, 'robots.txt'), 'utf8').includes('https://curaevita.com/sitemap.xml'));
 assert.ok(existsSync(path.join(root, 'google1a44c224d2456e8e.html')), 'Google verification file lost');
 console.log(`PASS: ${pages.length} pages, unique titles/canonicals, ${schemas} structured-data blocks, ${images} image uses, internal links/assets, release wording and Google verification.`);

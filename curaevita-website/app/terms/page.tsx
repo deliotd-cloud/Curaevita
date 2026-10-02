@@ -20,11 +20,11 @@ export default function TermsPage() {
       <article className="legal-page">
         <p className="eyebrow"><span /> Subscription and use terms</p>
         <h1>Simple terms, shown before you pay.</h1>
-        <p className="legal-lead">These terms summarise CuraeVita’s current subscription and responsible-use position. Google Play presents the binding local price, trial eligibility, renewal date and purchase terms before confirmation. Last updated 29 August 2026.</p>
+        <p className="legal-lead">These terms summarise CuraeVita’s current subscription and responsible-use position. Google Play presents the binding local price, trial eligibility, renewal date and purchase terms before confirmation. Last updated 2 October 2026.</p>
 
         <section className="legal-card">
           <h2>Price and trial eligibility</h2>
-          <p>The current UK price for new GLP-1 Companion and Menopause Companion subscribers is £0.99 per month. Eligible new Google Play subscribers may be shown a seven-day free trial. A trial applies only when it appears in the Google Play purchase screen for your account.</p>
+          <p>The current UK price for GLP-1, Menopause, ADHD, Gut and Migraine Companion is £0.99 per month per app. Each app requires a separate subscription; this is not a family bundle. Local prices may vary. Eligible new Google Play subscribers may be shown a seven-day free trial. A trial applies only when it appears in the Google Play purchase screen for your account.</p>
         </section>
         <section className="legal-card">
           <h2>Trial conversion and renewal</h2>

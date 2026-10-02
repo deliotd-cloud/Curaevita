@@ -36,6 +36,8 @@ jobs:
         run: npm ci
       - name: Build static website
         run: npm run build:github
+      - name: Verify SEO, app availability and download links
+        run: node scripts/check-site.mjs
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
@@ -56,5 +58,5 @@ jobs:
         run: |
           curl --fail --silent --show-error --retry 3 \
             -H 'Content-Type: application/json; charset=utf-8' \
-            --data '{"host":"curaevita.com","key":"6c82c7992f5b4df0a5a57b7a55d19f48","keyLocation":"https://curaevita.com/6c82c7992f5b4df0a5a57b7a55d19f48.txt","urlList":["https://curaevita.com/","https://curaevita.com/apps/","https://curaevita.com/guides/","https://curaevita.com/guides/symptom-diary-for-an-appointment/","https://curaevita.com/guides/medication-tracking-report/","https://curaevita.com/guides/protect-health-notes-on-android/","https://curaevita.com/press/"]}' \
+            --data '{"host":"curaevita.com","key":"6c82c7992f5b4df0a5a57b7a55d19f48","keyLocation":"https://curaevita.com/6c82c7992f5b4df0a5a57b7a55d19f48.txt","urlList":["https://curaevita.com/","https://curaevita.com/apps/","https://curaevita.com/apps/glp1-companion/","https://curaevita.com/apps/menopause-companion/","https://curaevita.com/apps/adhd-companion/","https://curaevita.com/apps/gut-companion/","https://curaevita.com/apps/migraine-companion/","https://curaevita.com/about/","https://curaevita.com/terms/","https://curaevita.com/guides/","https://curaevita.com/guides/symptom-diary-for-an-appointment/","https://curaevita.com/guides/medication-tracking-report/","https://curaevita.com/guides/protect-health-notes-on-android/","https://curaevita.com/guides/menopause-symptom-diary-for-an-appointment/","https://curaevita.com/press/"]}' \
             https://api.indexnow.org/indexnow

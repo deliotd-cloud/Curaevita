@@ -7,7 +7,7 @@ import { getPlayStoreUrl } from '../lib/play-store';
 
 export const metadata: Metadata = {
   title: 'Android Health Tracking Apps',
-  description: 'Compare the CuraeVita Companion family for GLP-1 treatment, menopause, ADHD, digestive symptoms and migraine tracking.',
+  description: 'Compare and download five Android health diaries on Google Play: GLP-1, menopause, ADHD, gut symptoms and migraine. £0.99/month per app in the UK.',
   alternates: { canonical: '/apps/' },
   openGraph: {
     title: 'CuraeVita Android Health Tracking Apps',
@@ -44,7 +44,7 @@ export default function AppsPage() {
       <section className="directory-hero">
         <p className="eyebrow"><span /> CuraeVita Health Apps</p>
         <h1>Find the Companion for your health journey.</h1>
-        <p>Each Android app focuses on one kind of personal record, but shares the same calm design, local-first approach and appointment-ready reporting.</p>
+        <p>All five Companions are available on Google Play. Choose a diary for GLP-1 injections, menopause and HRT, ADHD check-ins, digestive symptoms or migraine attacks.</p>
       </section>
 
       <section className="app-directory" aria-labelledby="app-list-title">
@@ -63,6 +63,7 @@ export default function AppsPage() {
               <p className="card-kicker">CuraeVita</p>
               <h2>{app.name}</h2>
               <p>{app.description}</p>
+              <p>£0.99/month per app in the UK. Seven-day free trial for eligible new subscribers; local prices and eligibility are confirmed by Google Play.</p>
               <div className="directory-actions">
                 {app.storeUrl ? <a className="button button-primary" href={getPlayStoreUrl(app.storeUrl, 'app_directory')}>Install from Google Play</a> : null}
                 {app.phase === 'review' ? <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=Menopause%20Companion%20launch%20update">Get a launch update</a> : null}

@@ -6,16 +6,17 @@ import { appScreenshots } from './lib/screenshots';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-09-06T00:00:00.000Z');
+  const lastModified = new Date('2026-10-02T00:00:00.000Z');
+  const unchanged = new Date('2026-09-06T00:00:00.000Z');
   const pages: MetadataRoute.Sitemap = [
     { url: 'https://curaevita.com/', lastModified, changeFrequency: 'weekly', priority: 1, images: ['https://curaevita.com/og.png'] },
     { url: 'https://curaevita.com/apps/', lastModified, changeFrequency: 'weekly', priority: 0.9 },
-    { url: 'https://curaevita.com/guides/', lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://curaevita.com/guides/', lastModified: unchanged, changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://curaevita.com/press/', lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: 'https://curaevita.com/about/', lastModified, changeFrequency: 'monthly', priority: 0.6 },
-    { url: 'https://curaevita.com/support/', lastModified, changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://curaevita.com/editorial-standards/', lastModified, changeFrequency: 'monthly', priority: 0.5 },
-    { url: 'https://curaevita.com/privacy/', lastModified, changeFrequency: 'monthly', priority: 0.5 },
+    { url: 'https://curaevita.com/support/', lastModified: unchanged, changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://curaevita.com/editorial-standards/', lastModified: unchanged, changeFrequency: 'monthly', priority: 0.5 },
+    { url: 'https://curaevita.com/privacy/', lastModified: unchanged, changeFrequency: 'monthly', priority: 0.5 },
     { url: 'https://curaevita.com/terms/', lastModified, changeFrequency: 'monthly', priority: 0.5 },
   ];
 
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...guides.map((guide) => ({
       url: `https://curaevita.com/guides/${guide.slug}/`,
-      lastModified: new Date(`${guide.modifiedDate}T00:00:00.000Z`),
+      lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
       images: ['https://curaevita.com/og.png'],
