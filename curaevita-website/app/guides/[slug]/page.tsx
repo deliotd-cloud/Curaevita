@@ -93,6 +93,7 @@ export default async function GuidePage({ params }: PageProps) {
           <h1>{guide.title}</h1>
           <p>{guide.excerpt}</p>
           <div className="guide-byline"><span>{guide.readingTime}</span><span>Reviewed {guide.reviewed}</span></div>
+          <a className="text-link" href="/resources/">Download a free printable diary →</a>
         </header>
 
         <div className="guide-layout">

@@ -200,3 +200,9 @@ footer > p { font-size: .875rem; color: #bbced0; max-width: 650px; }.footer-link
   .renewed-hero .hero-intro { font-size: 1.0625rem; }.screen-note strong { font-size: 1.4rem; }.screen-note a { font-size: .8125rem; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+.resource-card > img { margin-bottom: 18px; border-radius: 14px; }
+.resource-card .button { margin-top: 12px; }
+.resource-links { display: grid; gap: 14px; margin-top: 24px; }
+.app-demo { display: grid; grid-template-columns: 1fr minmax(250px, 340px); gap: 48px; align-items: center; }
+.app-demo video { width: 100%; border-radius: 24px; background: var(--panel-mint); }
+@media (max-width: 760px) { .app-demo { grid-template-columns: 1fr; } .app-demo video { max-width: 340px; justify-self: center; } }

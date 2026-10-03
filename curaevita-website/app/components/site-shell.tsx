@@ -17,7 +17,7 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
           <div className="nav-links">
             <a href="/apps/">Companions</a>
             <a href="/guides/">Guides</a>
-            <a href="/#approach">Our approach</a>
+            <a href="/resources/">Free diaries</a>
             <a href="/about/">About</a>
             <a href="/support/">Support</a>
             <a className="button button-primary nav-cta" href={getGlp1PlayStoreUrl('site_navigation')}>Get GLP-1 Companion</a>
@@ -32,6 +32,7 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
               <a href="/apps/gut-companion/">Gut Companion</a>
               <a href="/apps/migraine-companion/">Migraine Companion</a>
               <a href="/guides/">Practical guides</a>
+              <a href="/resources/">Free printable diaries</a>
               <a href="/#approach">Our approach</a>
               <a href="/about/">About CuraeVita</a>
               <a href="/support/">Support</a>
@@ -56,6 +57,7 @@ export function SiteFooter() {
       <nav className="footer-links" aria-label="Footer navigation">
         <a href="/apps/">Apps</a>
         <a href="/guides/">Guides</a>
+        <a href="/resources/">Free printable diaries</a>
         <a href="/about/">About</a>
         <a href="/press/">Press kit</a>
         <a href="/editorial-standards/">Editorial standards</a>

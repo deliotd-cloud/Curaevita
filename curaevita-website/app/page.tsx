@@ -242,6 +242,7 @@ export default function Home() {
           ))}
         </div>
         <a className="section-more text-link" href="/guides/">Browse every CuraeVita guide <span aria-hidden="true">→</span></a>
+        <a className="section-more text-link" href="/resources/">Try a free printable diary, with no sign-up <span aria-hidden="true">→</span></a>
       </section>
 
       <section className="updates-section" id="updates">

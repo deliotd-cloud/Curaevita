@@ -63,6 +63,19 @@ for (const route of ['', 'apps', 'about', 'press']) {
 assert.ok(readFileSync(path.join(root, 'robots.txt'), 'utf8').includes('https://curaevita.com/sitemap.xml'));
 assert.ok(existsSync(path.join(root, 'google1a44c224d2456e8e.html')), 'Google verification file lost');
 console.log(`PASS: ${pages.length} pages, unique titles/canonicals, ${schemas} structured-data blocks, ${images} image uses, internal links/assets, release wording and Google verification.`);
+const resourcesHtml = readFileSync(path.join(root, 'resources', 'index.html'), 'utf8');
+for (const id of ['glp1', 'menopause', 'adhd', 'gut', 'migraine']) {
+  const slug = `${id}-companion`;
+  const diary = readFileSync(path.join(root, 'downloads', `${id}-diary.pdf`));
+  assert.equal(diary.subarray(0, 4).toString(), '%PDF', `Invalid PDF: ${id}`);
+  assert.ok(resourcesHtml.includes(`/downloads/${id}-diary.pdf`), `Missing free resource: ${id}`);
+  const appHtml = readFileSync(path.join(root, 'apps', slug, 'index.html'), 'utf8');
+  assert.ok(appHtml.includes(`/videos/${slug}.mp4`) && appHtml.includes('preload="none"'), `Missing or eager-loading demo: ${id}`);
+  assert.ok(appHtml.includes('screenshot presentation') && appHtml.includes('example records'), `Missing demo disclosure: ${id}`);
+  assert.ok(!appHtml.includes('autoPlay'), `Demo should not autoplay: ${id}`);
+  assert.ok(existsSync(path.join(root, 'videos', `${slug}-poster.webp`)));
+}
+console.log('PASS: five valid free PDF downloads, five lazy-loading demos, posters and honest preview disclosures.');
 
 // Keep the approved palette and immediate visibility from drifting in future edits.
 const baseCss = readFileSync('app/globals.css', 'utf8');

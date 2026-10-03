@@ -30,7 +30,7 @@ export function GET() {
     <link>https://curaevita.com/guides/</link>
     <description>Practical, non-diagnostic guidance for personal health records, appointments and Android privacy.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 04 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>${new Date(`${guides.map(guide => guide.modifiedDate).sort().at(-1)}T00:00:00.000Z`).toUTCString()}</lastBuildDate>
     ${items}
   </channel>
 </rss>`;

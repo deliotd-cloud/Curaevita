@@ -259,6 +259,20 @@ export default async function CompanionPage({ params }: PageProps) {
         </ul>
       </section>
 
+      <section className="content-section app-demo" aria-labelledby="app-demo-title">
+        <div className="content-heading">
+          <p className="eyebrow"><span /> A 24-second introduction</p>
+          <h2 id="app-demo-title">See what your record can look like.</h2>
+          <p>A short walkthrough of genuine {app.name} screens using example records. This is a screenshot presentation, not a recording of live taps or a purchase.</p>
+          <p>Watch without sound, or explore the screenshots above. No autoplay and no account needed.</p>
+          <a className="text-link" href={`/videos/${app.slug}.mp4`} download>Download the app introduction (MP4) ↓</a>
+        </div>
+        <video controls playsInline preload="none" poster={`/videos/${app.slug}-poster.webp`} width="1080" height="1920" aria-label={`${app.name} screenshot walkthrough; on-screen text, no spoken audio`}>
+          <source src={`/videos/${app.slug}.mp4`} type="video/mp4" />
+          Your browser does not support this video. The same features are described in the app screenshots above.
+        </video>
+      </section>
+
       <section className="content-section data-section">
         <div className="content-heading">
           <p className="eyebrow"><span /> Privacy in practice</p>
@@ -330,6 +344,7 @@ export default async function CompanionPage({ params }: PageProps) {
         <div>
           <p className="eyebrow"><span /> Practical guides</p>
           <h2>Use your personal record with more confidence</h2>
+          <a className="text-link" href="/resources/">Try a free printable diary first →</a>
         </div>
         <div className="app-guide-grid">
           {relatedGuides.map((guide, index) => (
