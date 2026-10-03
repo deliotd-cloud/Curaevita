@@ -74,6 +74,15 @@ for (const id of ['glp1', 'menopause', 'adhd', 'gut', 'migraine']) {
   assert.ok(appHtml.includes('screenshot presentation') && appHtml.includes('example records'), `Missing demo disclosure: ${id}`);
   assert.ok(!appHtml.includes('autoPlay'), `Demo should not autoplay: ${id}`);
   assert.ok(existsSync(path.join(root, 'videos', `${slug}-poster.webp`)));
+  const demoSchema = [...appHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .flatMap(match => JSON.parse(match[1])).find(item => item['@type'] === 'VideoObject');
+  assert.ok(demoSchema, `Missing video metadata: ${id}`);
+  const videoAppNames = {glp1:'GLP-1',menopause:'Menopause',adhd:'ADHD',gut:'Gut',migraine:'Migraine'};
+  assert.equal(demoSchema.name, `${videoAppNames[id]} Companion: a 24-second screenshot introduction`);
+  assert.equal(demoSchema.duration, 'PT24S');
+  assert.equal(demoSchema.contentUrl, `https://curaevita.com/videos/${slug}.mp4`);
+  assert.equal(demoSchema.thumbnailUrl, `https://curaevita.com/videos/${slug}-poster.webp`);
+  assert.ok(!demoSchema.interactionStatistic, 'Do not invent video views');
 }
 console.log('PASS: five valid free PDF downloads, five lazy-loading demos, posters and honest preview disclosures.');
 

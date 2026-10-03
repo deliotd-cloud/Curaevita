@@ -121,6 +121,19 @@ export default async function CompanionPage({ params }: PageProps) {
         applicationSchema,
         {
           '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          '@id': `${pageUrl}#introduction`,
+          name: `${app.name}: a 24-second screenshot introduction`,
+          description: `A short presentation of genuine ${app.name} screens with example records. Not a recording of live taps, a purchase or medical advice.`,
+          thumbnailUrl: `https://curaevita.com/videos/${app.slug}-poster.webp`,
+          contentUrl: `https://curaevita.com/videos/${app.slug}.mp4`,
+          uploadDate: '2026-10-03T00:50:30Z',
+          duration: 'PT24S',
+          inLanguage: 'en-GB',
+          creator: { '@type': 'Organization', '@id': 'https://curaevita.com/#organization', name: 'CuraeVita', url: 'https://curaevita.com/' },
+        },
+        {
+          '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'CuraeVita', item: 'https://curaevita.com/' },
