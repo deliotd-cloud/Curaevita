@@ -66,9 +66,22 @@ export default function PressPage() {
               <article key={app.slug}>
                 <Image src={app.image} alt={app.iconAlt} width="104" height="104" loading="lazy" decoding="async" />
                 <div><strong>{app.name}</strong><span>{app.status}</span></div>
-                <a href={app.image.replace('.webp', '.png')} download>Download PNG</a>
+                <div className="resource-links">
+                  <a href={app.image.replace('.webp', '.png')} download>Download icon PNG</a>
+                  <a href={`/videos/${app.slug}.mp4`} download>Download app introduction MP4</a>
+                  <a href={`/apps/${app.slug}/`}>View genuine app screens</a>
+                </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="story-split">
+          <div><p className="eyebrow"><span /> Free resources</p><h2>A useful starting point, even on paper.</h2></div>
+          <div>
+            <p>Five free A4 diary templates are available without an email address or account. Share links or blank copies with your readers or community, not someone’s completed health notes.</p>
+            <p>The app introductions are 24-second screenshot presentations with example records, not live recordings or medical demonstrations. Please preserve the app name, example-data disclosure and subscription details when sharing them.</p>
+            <a className="text-link" href="/resources/">Explore free printable diaries →</a>
           </div>
         </section>
 
@@ -85,7 +98,7 @@ export default function PressPage() {
 
         <section className="review-note">
           <strong>Brand source</strong>
-          <p>For the latest status and product wording, use the individual app pages on this website. This page was reviewed on 2 October 2026.</p>
+          <p>For the latest status and product wording, use the individual app pages on this website. This page was reviewed on 3 October 2026.</p>
           <a href="/apps/">View all app pages</a>
         </section>
       </article>
