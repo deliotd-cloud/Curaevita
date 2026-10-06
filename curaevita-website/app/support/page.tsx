@@ -23,6 +23,7 @@ export default function SupportPage() {
           <h1>Help with your Companion.</h1>
           <p>Choose the closest topic below. Please do not include medication, symptom, diagnosis or other sensitive health details in an email unless they are essential to explain a technical problem.</p>
           <a className="button button-primary" href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20support%20request">Email support</a>
+          <div className="resource-links"><a className="text-link" href="/getting-started/">New to your Companion? Follow the first-week guide →</a></div>
         </header>
 
         <section className="support-grid" aria-label="Support topics">

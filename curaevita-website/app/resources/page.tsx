@@ -21,6 +21,7 @@ export default function ResourcesPage() {
       <h1>A useful record starts with a little space to write.</h1>
       <p>Five free printable diaries for the facts you want to remember. Download an A4 PDF, print as many blank copies as you need, and bring your questions to your next appointment.</p>
       <a className="text-link" href="/apps/">Prefer a diary on your Android phone? Explore the apps →</a>
+      <div className="resource-links"><a className="text-link" href="/share-resources/">Sharing with a community or organisation? Start here →</a></div>
     </section>
     <section className="guide-directory" aria-label="Free PDF diary downloads">
       {diaryResources.map(resource=>{

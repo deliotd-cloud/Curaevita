@@ -86,6 +86,32 @@ for (const id of ['glp1', 'menopause', 'adhd', 'gut', 'migraine']) {
 }
 console.log('PASS: five valid free PDF downloads, five lazy-loading demos, posters and honest preview disclosures.');
 
+// Exercise the customer journey in the generated HTML, not merely in source text.
+const journeyPages = Object.fromEntries(['getting-started', 'from-youtube', 'share-resources'].map(route => [route, readFileSync(path.join(root, route, 'index.html'), 'utf8')]));
+const guideHtml = journeyPages['getting-started'];
+assert.ok(guideHtml.includes('Uninstalling alone does not cancel') && guideHtml.includes('https://play.google.com/store/account/subscriptions'));
+assert.ok(guideHtml.includes('never rewarded') && guideHtml.includes('positive or critical') && guideHtml.includes('Do not include personal health details'));
+assert.ok(journeyPages['share-resources'].includes('does not imply your endorsement') && journeyPages['share-resources'].includes('administrator approves'));
+for (const [route, source] of [['from-youtube', 'youtube'], ['share-resources', 'resource_partner']]) {
+  const html = journeyPages[route];
+  const links = [...html.matchAll(/href="(https:\/\/play\.google\.com\/store\/apps\/details[^\"]+)"/g)].map(match => new URL(match[1].replaceAll('&amp;', '&'))).filter(url => url.searchParams.get('utm_source') === source);
+  assert.equal(links.length, 5, `Expected five distinct campaign links: ${route}`);
+  assert.equal(new Set(links.map(url => url.searchParams.get('id'))).size, 5);
+  for (const url of links) {
+    assert.ok(/^com\.curaevita\.(glp1|menopause|adhd|gut|migraine)companion$/.test(url.searchParams.get('id')));
+    assert.ok(url.searchParams.get('utm_campaign').endsWith('_organic'));
+    assert.deepEqual([...url.searchParams.keys()].sort(), ['id', 'utm_campaign', 'utm_content', 'utm_medium', 'utm_source']);
+  }
+  assert.ok(html.includes('£0.99') && html.includes('eligib') && /[Rr]enew/.test(html));
+}
+for (const id of ['glp1', 'menopause', 'adhd', 'gut', 'migraine']) {
+  assert.ok(guideHtml.includes(`id="${id}-companion"`));
+  assert.ok(journeyPages['share-resources'].includes(`/downloads/${id}-diary.pdf`));
+  assert.ok(journeyPages['from-youtube'].includes(`/getting-started/#${id}-companion`));
+}
+assert.equal([...journeyPages['from-youtube'].matchAll(/href="https:\/\/www\.youtube\.com\/shorts\//g)].length, 5);
+console.log('PASS: three customer-journey pages, five app-specific first entries, honest reviews, cancellation help and ten identifier-free campaign links.');
+
 // Keep the approved palette and immediate visibility from drifting in future edits.
 const baseCss = readFileSync('app/globals.css', 'utf8');
 const themeCss = readFileSync('app/refined.css', 'utf8');

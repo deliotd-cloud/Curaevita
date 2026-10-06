@@ -7,6 +7,7 @@ import { companions, getCompanion } from '../../lib/apps';
 import { guides } from '../../lib/guides';
 import { getPlayStoreUrl } from '../../lib/play-store';
 import { appScreenshots } from '../../lib/screenshots';
+import { youtubeIntroductions } from '../../lib/customer-start';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -279,6 +280,7 @@ export default async function CompanionPage({ params }: PageProps) {
           <p>A short walkthrough of genuine {app.name} screens using example records. This is a screenshot presentation, not a recording of live taps or a purchase.</p>
           <p>Watch without sound, or explore the screenshots above. No autoplay and no account needed.</p>
           <a className="text-link" href={`/videos/${app.slug}.mp4`} download>Download the app introduction (MP4) ↓</a>
+          <div className="resource-links"><a className="text-link" href={youtubeIntroductions[app.slug]}>Watch on YouTube ↗</a><a className="text-link" href={`/getting-started/#${app.slug}`}>A simple guide to your first week →</a></div>
         </div>
         <video controls playsInline preload="none" poster={`/videos/${app.slug}-poster.webp`} width="1080" height="1920" aria-label={`${app.name} screenshot walkthrough; on-screen text, no spoken audio`}>
           <source src={`/videos/${app.slug}.mp4`} type="video/mp4" />

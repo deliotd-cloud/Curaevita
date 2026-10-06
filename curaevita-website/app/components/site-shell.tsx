@@ -58,6 +58,9 @@ export function SiteFooter() {
         <a href="/apps/">Apps</a>
         <a href="/guides/">Guides</a>
         <a href="/resources/">Free printable diaries</a>
+        <a href="/getting-started/">Getting started</a>
+        <a href="/share-resources/">Resources for organisations</a>
+        <a href="/from-youtube/">Apps featured on YouTube</a>
         <a href="/about/">About</a>
         <a href="/press/">Press kit</a>
         <a href="/editorial-standards/">Editorial standards</a>
@@ -66,6 +69,7 @@ export function SiteFooter() {
         <a href="/support/">Support</a>
         <a href="/apps/menopause-companion/">Menopause Companion</a>
         <a href="https://github.com/deliotd-cloud/Curaevita" rel="me">GitHub</a>
+        <a href="https://www.youtube.com/channel/UCWeSSfKFrTmiW1TTzRdbTCw" rel="me">YouTube</a>
       </nav>
     </footer>
   );
