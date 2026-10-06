@@ -211,3 +211,5 @@ footer > p { font-size: .875rem; color: #bbced0; max-width: 650px; }.footer-link
 .growth-card-grid ol { padding-left: 22px; color: var(--muted); line-height: 1.8; }
 .growth-card-grid li + li { margin-top: 12px; }
 .resource-quote { margin: 24px 0 0; padding: 28px; border-left: 4px solid var(--teal-deep); background: var(--panel-mint); color: var(--ink); line-height: 1.8; overflow-wrap: anywhere; }
+.first-week-video { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; background: var(--panel-mint); margin-top: 16px; }
+.first-week-disclosure { font-size: 13px; }

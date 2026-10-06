@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function GettingStarted() {
   return <main className="inner-shell">
-    <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Getting started with your CuraeVita Companion', url: 'https://curaevita.com/getting-started/', inLanguage: 'en-GB', dateModified: '2026-10-06', isPartOf: { '@id': 'https://curaevita.com/#website' } }} />
+    <JsonLd data={[{ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Getting started with your CuraeVita Companion', url: 'https://curaevita.com/getting-started/', inLanguage: 'en-GB', dateModified: '2026-10-06', isPartOf: { '@id': 'https://curaevita.com/#website' } }, ...companions.map(app => ({ '@context': 'https://schema.org', '@type': 'VideoObject', name: `${app.name}: your first week`, description: 'A captioned screenshot guide to a first entry, personal history, PDF reports and subscription choices. Genuine screens with example records, not a live-device recording. Silent with on-screen text.', thumbnailUrl: `https://curaevita.com/videos/first-week/${app.slug}.webp`, contentUrl: `https://curaevita.com/videos/first-week/${app.slug}.mp4`, uploadDate: '2026-10-06T14:36:00Z', duration: 'PT1M12S', inLanguage: 'en-GB' }))]} />
     <SiteHeader compact />
     <section className="directory-hero">
       <p className="eyebrow"><span /> Your first week</p>
@@ -39,6 +39,12 @@ export default function GettingStarted() {
         <Image src={app.image} alt="" width={56} height={56} />
         <p className="card-kicker">{app.name}</p><h2>{firstEntries[app.slug].title}</h2>
         <ol>{firstEntries[app.slug].steps.map(step => <li key={step}>{step}</li>)}</ol>
+        <video className="first-week-video" controls preload="none" playsInline poster={`/videos/first-week/${app.slug}.webp`} aria-label={`${app.name} captioned first-week screenshot guide`}>
+          <source src={`/videos/first-week/${app.slug}.mp4`} type="video/mp4" />
+          <track kind="captions" src={`/videos/first-week/${app.slug}.vtt`} srcLang="en" label="English" />
+          <a href={`/videos/first-week/${app.slug}.mp4`}>Download the first-week guide</a>
+        </video>
+        <p className="first-week-disclosure">72-second silent screenshot guide with on-screen text and optional captions. Genuine screens, example records, not a recording of live taps or purchases.</p>
         <div className="resource-links"><a className="text-link" href={`/apps/${app.slug}/`}>See features and example screens →</a><a className="text-link" href={getPlayStoreUrl(app.storeUrl!, 'getting_started_honest_review')}>Leave an honest Google Play review →</a></div>
       </article>)}
     </section>

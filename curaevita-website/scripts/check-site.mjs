@@ -108,7 +108,12 @@ for (const id of ['glp1', 'menopause', 'adhd', 'gut', 'migraine']) {
   assert.ok(guideHtml.includes(`id="${id}-companion"`));
   assert.ok(journeyPages['share-resources'].includes(`/downloads/${id}-diary.pdf`));
   assert.ok(journeyPages['from-youtube'].includes(`/getting-started/#${id}-companion`));
+  assert.ok(guideHtml.includes(`/videos/first-week/${id}-companion.mp4`) && guideHtml.includes(`/videos/first-week/${id}-companion.vtt`));
+  assert.ok(readFileSync(path.join(root, 'videos', 'first-week', `${id}-companion.vtt`), 'utf8').startsWith('WEBVTT'));
 }
+const firstWeekVideoSchemas = [...guideHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(match => JSON.parse(match[1])).filter(item => item['@type'] === 'VideoObject');
+assert.equal(firstWeekVideoSchemas.length, 5);
+for (const schema of firstWeekVideoSchemas) { assert.equal(schema.duration, 'PT1M12S'); assert.ok(!schema.interactionStatistic); }
 assert.equal([...journeyPages['from-youtube'].matchAll(/href="https:\/\/www\.youtube\.com\/shorts\//g)].length, 5);
 console.log('PASS: three customer-journey pages, five app-specific first entries, honest reviews, cancellation help and ten identifier-free campaign links.');
 
