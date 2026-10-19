@@ -44,6 +44,7 @@ export default function Home() {
           '@id': 'https://curaevita.com/#organization',
           name: 'CuraeVita Health Apps',
           alternateName: 'CuraeVita',
+          legalName: 'Elivion Ltd',
           url: 'https://curaevita.com/',
           logo: 'https://curaevita.com/icon.png',
           email: 'mailto:eliviontechnologies@gmail.com',
@@ -77,6 +78,7 @@ export default function Home() {
             <a className="button button-primary" href={getGlp1PlayStoreUrl('home_hero')}>Get GLP-1 Companion <span aria-hidden="true">↗</span></a>
             <a className="text-link" href="/apps/">Choose from all five apps</a>
           </div>
+          <p className="hero-offer-note"><strong>Created by a practising UK doctor.</strong> The creator owns the CuraeVita apps and has a financial interest in their subscriptions. Published by Elivion Ltd.</p>
           <p className="hero-offer-note"><strong>All five apps now on Google Play.</strong> £0.99/month per app in the UK after a seven-day free trial for eligible new subscribers. Google Play confirms your local offer before you subscribe.</p>
           <ul className="trust-list" aria-label="CuraeVita principles">
             <li><span aria-hidden="true">✓</span> Private by design</li>

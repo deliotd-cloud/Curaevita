@@ -20,10 +20,11 @@ export default function PrivacyPage() {
       <article className="legal-page">
         <p className="eyebrow"><span /> Privacy notice</p>
         <h1>Your information stays yours.</h1>
-        <p className="legal-lead">This notice explains the shared privacy approach across the CuraeVita Companion family and this website. Individual in-app notices describe any feature-specific detail. Last updated 4 September 2026.</p>
+        <p className="legal-lead">This notice covers GLP-1 Companion, Menopause Companion, ADHD Companion, Gut Companion, Migraine Companion and this website. Individual in-app notices describe feature-specific details. Last updated 19 October 2026.</p>
 
         <section className="legal-card">
           <h2>Summary</h2>
+          <p>CuraeVita is published by Elivion Ltd. Elivion Ltd is responsible for the information processed to operate CuraeVita’s services and respond to support or privacy enquiries. Our contact address remains the one listed below.</p>
           <ul>
             <li>Medication, symptom, measurement, journal and tracking entries are stored locally on your device.</li>
             <li>CuraeVita does not operate an account database containing those health entries.</li>
@@ -49,7 +50,7 @@ export default function PrivacyPage() {
           <h2>Optional features and permissions</h2>
           <ul>
             <li>GLP-1 Companion can write selected weight and body-fat entries to Health Connect after you grant permission. It does not read your wider Health Connect record.</li>
-            <li>Migraine Companion can request approximate location for an optional weather lookup after explicit consent. The requested location is sent to the weather provider for that lookup.</li>
+            <li>Migraine Companion can request device location for an optional weather lookup after explicit consent. Depending on the Android permission you grant, this may include precise coordinates. Coordinates are sent over HTTPS to Open-Meteo to retrieve weather information; they are not sent to CuraeVita. Declining the lookup does not prevent diary logging. See <a href="https://open-meteo.com/en/terms">Open-Meteo’s privacy terms</a>.</li>
             <li>Local reminders require notification permission and are scheduled on your device.</li>
             <li>A biometric or passcode app gate uses Android’s device-supported authentication and is a screen-access control, not a claim that every local file is separately encrypted.</li>
           </ul>
@@ -66,6 +67,7 @@ export default function PrivacyPage() {
         </section>
         <section className="legal-card">
           <h2>Questions and changes</h2>
+          <p>Local entries remain on your installation until you edit or delete them, clear app storage or uninstall the app. Copies you export are managed separately by you and the destination you choose. Subscription records are retained to administer purchases and access, and where necessary for financial or legal obligations. Support emails are retained as needed to resolve enquiries and meet applicable obligations. You can ask us about retention or request deletion using the contact below; any records that must legally be retained may not be immediately deleted.</p>
           <p>For privacy questions, email <a href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20privacy%20question">eliviontechnologies@gmail.com</a>. This notice may change when an app, service provider or legal requirement changes. A new review date will be shown here.</p>
         </section>
         <a className="legal-back" href="/">← Return to CuraeVita</a>

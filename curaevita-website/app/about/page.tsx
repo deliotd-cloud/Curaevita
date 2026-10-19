@@ -36,6 +36,15 @@ export default function AboutPage() {
         </header>
 
         <section className="story-split">
+          <div><p className="eyebrow"><span /> Who is behind CuraeVita?</p><h2>Created by a practising UK doctor.</h2></div>
+          <div>
+            <p>CuraeVita was created by a practising doctor in the UK and is published by Elivion Ltd. Its five Companion apps are personal record-keeping tools, designed to help you organise observations you may choose to discuss at an appointment.</p>
+            <p>The apps do not diagnose conditions, prescribe treatment or recommend medication doses. The creator’s professional background is not a claim of independent medical review, clinical validation or NHS endorsement.</p>
+            <p><strong>Commercial interest:</strong> The creator owns the CuraeVita apps and has a financial interest in their paid subscriptions.</p>
+          </div>
+        </section>
+
+        <section className="story-split">
           <div>
             <p className="eyebrow"><span /> Why it exists</p>
             <h2>Health history is hard to remember under appointment pressure.</h2>
