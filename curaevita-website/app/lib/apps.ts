@@ -268,7 +268,7 @@ export const companions: Companion[] = [
     privacyItems: [
       'Attack and medication entries are stored locally.',
       'Weather lookup is optional and requires explicit consent.',
-      'Approximate location is sent to a third-party weather service only for the requested lookup.',
+      'Current Open-Meteo releases may send precise coordinates for an optional lookup. See the privacy policy for provider logging and the MET Norway update being prepared.',
       'CuraeVita does not operate a server that stores your migraine diary.',
     ],
     faqs: [
