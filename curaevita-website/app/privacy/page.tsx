@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           <h2>Optional features and permissions</h2>
           <ul>
             <li>GLP-1 Companion can write selected weight and body-fat entries to Health Connect after you grant permission. It does not read your wider Health Connect record.</li>
-            <li>Migraine Companion can request device location for an optional weather lookup after explicit consent. Depending on the Android permission you grant, this may include precise coordinates. Coordinates are sent over HTTPS to Open-Meteo to retrieve weather information; they are not sent to CuraeVita. Declining the lookup does not prevent diary logging. See <a href="https://open-meteo.com/en/terms">Open-Meteo’s privacy terms</a>.</li>
+            <li>Migraine Companion can request device location for an optional weather lookup after explicit consent. Depending on the Android permission you grant, this may include precise coordinates. Coordinates are sent over HTTPS to Open-Meteo to retrieve weather information; they are not sent to CuraeVita. Open-Meteo states that its troubleshooting logs may contain coordinates and are deleted after 90 days, so this lookup is not described as memory-only processing. Declining the lookup does not prevent diary logging. See <a href="https://open-meteo.com/en/terms">Open-Meteo’s privacy terms</a>.</li>
             <li>Local reminders require notification permission and are scheduled on your device.</li>
             <li>A biometric or passcode app gate uses Android’s device-supported authentication and is a screen-access control, not a claim that every local file is separately encrypted.</li>
           </ul>
