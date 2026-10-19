@@ -65,6 +65,16 @@ export default function PrivacyPage() {
           <h2>Support emails</h2>
           <p>If you contact support, CuraeVita receives the email address and information you choose to send. It is used to respond and investigate the request. Avoid sending health records or exported reports unless they are essential and you deliberately choose to do so.</p>
         </section>
+        <section className="legal-card" id="delete-data">
+          <h2>Delete your CuraeVita data</h2>
+          <p>These steps apply to GLP-1 Companion, Menopause Companion, ADHD Companion, Gut Companion and Migraine Companion, published by Elivion Ltd.</p>
+          <ol>
+            <li>To remove diary entries held only on your phone, use the app’s record deletion or reset controls, or clear the app’s storage in Android settings. Save a backup first if you may need the records again. Elivion Ltd cannot remotely retrieve or delete entries stored only on your device.</li>
+            <li>Delete exported PDFs, backups and optional photos separately from the destinations where you saved them. Resetting an app does not delete those copies.</li>
+            <li>To request deletion of support emails or the CuraeVita subscription record held by RevenueCat, email <a href="mailto:eliviontechnologies@gmail.com?subject=CuraeVita%20data%20deletion">eliviontechnologies@gmail.com</a> with the Companion name and, if available, your Google Play order number. Do not attach health records. We may need to verify that a purchase record belongs to you before acting.</li>
+          </ol>
+          <p>A request covers support correspondence and pseudonymous subscription records we can identify. Financial, fraud-prevention or other records that must be retained for legal obligations may be kept for the applicable required period; we will explain any applicable retention when responding. Deleting app data or requesting deletion does not cancel a Google Play subscription. Cancel separately through Google Play subscriptions to stop future renewals.</p>
+        </section>
         <section className="legal-card">
           <h2>Questions and changes</h2>
           <p>Local entries remain on your installation until you edit or delete them, clear app storage or uninstall the app. Copies you export are managed separately by you and the destination you choose. Subscription records are retained to administer purchases and access, and where necessary for financial or legal obligations. Support emails are retained as needed to resolve enquiries and meet applicable obligations. You can ask us about retention or request deletion using the contact below; any records that must legally be retained may not be immediately deleted.</p>
